@@ -2,7 +2,7 @@
  * @file
  * @brief Generated model file.
  * 
- * Date:  2020-11-24 18:05
+ * Date:  2020-11-25 13:17
  * 
  * X2C-Version: 6.3.2018
  * X2C-Edition: Free
@@ -10,7 +10,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: MC_FOC_SL_FIP_dsPIC33CK_LVMC                                                                                */
-/* Date:  2020-11-24 18:05                                                                                            */
+/* Date:  2020-11-25 13:17                                                                                            */
 
 /* X2C-Version: 6.3.2018                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -88,109 +88,108 @@ extern "C" {
     SCOPE_MAIN_FUNCTIONS
 
 #define PARAMETER_TABLE \
-    { 1, &x2cModel.blocks.bConstant3 } , \
-    { 2, &x2cModel.blocks.bDelay1 } , \
-    { 3, &x2cModel.blocks.bDelay2 } , \
-    { 4, &x2cModel.blocks.sFOC_main.bClarke_Park_MCHP } , \
-    { 5, &x2cModel.blocks.sFOC_main.bConstant } , \
-    { 6, &x2cModel.blocks.sFOC_main.bConstant1 } , \
-    { 7, &x2cModel.blocks.sFOC_main.bGain } , \
-    { 8, &x2cModel.blocks.sFOC_main.bGain1 } , \
-    { 9, &x2cModel.blocks.sFOC_main.bGain2 } , \
-    { 10, &x2cModel.blocks.sFOC_main.bManualSwitch } , \
-    { 11, &x2cModel.blocks.sFOC_main.bManualSwitch1 } , \
-    { 12, &x2cModel.blocks.sFOC_main.bManualSwitch2 } , \
-    { 13, &x2cModel.blocks.sFOC_main.bManualSwitch3 } , \
-    { 14, &x2cModel.blocks.sFOC_main.bManualSwitch4 } , \
-    { 15, &x2cModel.blocks.sFOC_main.bNot } , \
-    { 16, &x2cModel.blocks.sFOC_main.bOpenLoop_Vd } , \
-    { 17, &x2cModel.blocks.sFOC_main.bOpenLoop_Vq } , \
-    { 18, &x2cModel.blocks.sFOC_main.bPI_flux } , \
-    { 19, &x2cModel.blocks.sFOC_main.bPI_torque } , \
-    { 20, &x2cModel.blocks.sFOC_main.sPLLEstimator.bBEMF_MCHP } , \
-    { 21, &x2cModel.blocks.sFOC_main.sPLLEstimator.bConstant1 } , \
-    { 22, &x2cModel.blocks.sFOC_main.sPLLEstimator.bDelay1 } , \
-    { 23, &x2cModel.blocks.sFOC_main.sPLLEstimator.bEdfilter } , \
-    { 24, &x2cModel.blocks.sFOC_main.sPLLEstimator.bEqfilter } , \
-    { 25, &x2cModel.blocks.sFOC_main.sPLLEstimator.bPark_MCHP } , \
-    { 26, &x2cModel.blocks.sFOC_main.sPLLEstimator.sSpeed_Estim_Superblock.bAdd } , \
-    { 27, &x2cModel.blocks.sFOC_main.sPLLEstimator.sSpeed_Estim_Superblock.bAutoSwitch } , \
-    { 28, &x2cModel.blocks.sFOC_main.sPLLEstimator.sSpeed_Estim_Superblock.bGain } , \
-    { 29, &x2cModel.blocks.sFOC_main.sPLLEstimator.sSpeed_Estim_Superblock.bSub } , \
-    { 30, &x2cModel.blocks.sFOC_main.sPLLEstimator.buI } , \
-    { 31, &x2cModel.blocks.sFOC_main.bPark_Clarke_inv_SVM_MCHP } , \
-    { 32, &x2cModel.blocks.sFOC_main.bSaturation } , \
-    { 33, &x2cModel.blocks.sFOC_main.bSaturation1 } , \
-    { 34, &x2cModel.blocks.sFOC_main.bSin3Gen } , \
-    { 35, &x2cModel.blocks.sFOC_main.bSub_flux } , \
-    { 36, &x2cModel.blocks.sFOC_main.bSub_torque } , \
-    { 37, &x2cModel.blocks.bGain } , \
-    { 38, &x2cModel.blocks.bManualSwitch } , \
-    { 39, &x2cModel.blocks.bManualSwitch1 } , \
-    { 40, &x2cModel.blocks.bNot } , \
-    { 41, &x2cModel.blocks.sspeedPI.bConstant } , \
-    { 42, &x2cModel.blocks.sspeedPI.bConstant1 } , \
-    { 43, &x2cModel.blocks.sspeedPI.bManualSwitch } , \
-    { 44, &x2cModel.blocks.sspeedPI.bPI_speed } , \
-    { 45, &x2cModel.blocks.sspeedPI.bRateLimiter } , \
-    { 46, &x2cModel.blocks.sspeedPI.bSpeed_Init } , \
-    { 47, &x2cModel.blocks.sspeedPI.bSpeed_Init1 } , \
-    { 48, &x2cModel.blocks.sspeedPI.bSpeed_error } , \
-    { 49, &x2cModel.blocks.sspeedPI.sperturbation.bAdd } , \
-    { 50, &x2cModel.blocks.sspeedPI.sperturbation.bAutoSwitch } , \
-    { 51, &x2cModel.blocks.sspeedPI.sperturbation.bConstant } , \
-    { 52, &x2cModel.blocks.sspeedPI.sperturbation.bConstant1 } , \
-    { 53, &x2cModel.blocks.sspeedPI.sperturbation.bConstant2 } , \
-    { 54, &x2cModel.blocks.sspeedPI.sperturbation.bConstant3 } , \
-    { 55, &x2cModel.blocks.sspeedPI.sperturbation.bGain } , \
-    { 56, &x2cModel.blocks.sspeedPI.sperturbation.bRateLimiter } , \
-    { 57, &x2cModel.blocks.sspeedPI.sperturbation.bSinGen } , \
-    { 58, &x2cModel.blocks.sstartup.bConstant1 } , \
-    { 59, &x2cModel.blocks.sstartup.bConstant2 } , \
-    { 60, &x2cModel.blocks.sstartup.bConstant5 } , \
-    { 61, &x2cModel.blocks.sstartup.bFlux_select } , \
-    { 62, &x2cModel.blocks.sstartup.bFlux_select1 } , \
-    { 63, &x2cModel.blocks.sstartup.bIdRateLimiter } , \
-    { 64, &x2cModel.blocks.sstartup.bIq_select } , \
-    { 65, &x2cModel.blocks.sstartup.bPI } , \
-    { 66, &x2cModel.blocks.sstartup.bPosError } , \
-    { 67, &x2cModel.blocks.sstartup.bPosSwitch } , \
-    { 68, &x2cModel.blocks.sstartup.bRamp_Up_Current } , \
-    { 69, &x2cModel.blocks.sstartup.sRamp_Up_SB.bConstant4 } , \
-    { 70, &x2cModel.blocks.sstartup.sRamp_Up_SB.bI_Init_Zero } , \
-    { 71, &x2cModel.blocks.sstartup.sRamp_Up_SB.bI_Init_Zero1 } , \
-    { 72, &x2cModel.blocks.sstartup.sRamp_Up_SB.bMult } , \
-    { 73, &x2cModel.blocks.sstartup.sRamp_Up_SB.bRamp_Up_PositionGenerator } , \
-    { 74, &x2cModel.blocks.sstartup.sRamp_Up_SB.bSaturation } , \
-    { 75, &x2cModel.blocks.sstartup.sRamp_Up_SB.bSign } , \
-    { 76, &x2cModel.blocks.sstartup.sRamp_Up_SB.bSpeed_Ramp_UP_I } , \
-    { 77, &x2cModel.blocks.sstartup.sRamp_Up_SB.bTypeConv } , \
-    { 78, &x2cModel.blocks.sstartup.bSequencer } , \
-    { 79, &x2cModel.blocks.sstartup.bTypeConv } , \
-    { 80, &x2cModel.blocks.sstartup.bTypeConv1 } , \
-    { 81, &x2cModel.blocks.sstartup.bTypeConv2 } , \
-    { 99, &x2cScope }
+    { 1, &x2cModel.blocks.bDelay1 } , \
+    { 2, &x2cModel.blocks.bDelay2 } , \
+    { 3, &x2cModel.blocks.sFOC_main.bClarke_Park_MCHP } , \
+    { 4, &x2cModel.blocks.sFOC_main.bConstant } , \
+    { 5, &x2cModel.blocks.sFOC_main.bConstant1 } , \
+    { 6, &x2cModel.blocks.sFOC_main.bGain } , \
+    { 7, &x2cModel.blocks.sFOC_main.bGain1 } , \
+    { 8, &x2cModel.blocks.sFOC_main.bGain2 } , \
+    { 9, &x2cModel.blocks.sFOC_main.bManualSwitch } , \
+    { 10, &x2cModel.blocks.sFOC_main.bManualSwitch1 } , \
+    { 11, &x2cModel.blocks.sFOC_main.bManualSwitch2 } , \
+    { 12, &x2cModel.blocks.sFOC_main.bManualSwitch3 } , \
+    { 13, &x2cModel.blocks.sFOC_main.bManualSwitch4 } , \
+    { 14, &x2cModel.blocks.sFOC_main.bNot } , \
+    { 15, &x2cModel.blocks.sFOC_main.bOpenLoop_Vd } , \
+    { 16, &x2cModel.blocks.sFOC_main.bOpenLoop_Vq } , \
+    { 17, &x2cModel.blocks.sFOC_main.bPI_flux } , \
+    { 18, &x2cModel.blocks.sFOC_main.bPI_torque } , \
+    { 19, &x2cModel.blocks.sFOC_main.sPLLEstimator.bBEMF_MCHP } , \
+    { 20, &x2cModel.blocks.sFOC_main.sPLLEstimator.bDelay1 } , \
+    { 21, &x2cModel.blocks.sFOC_main.sPLLEstimator.bEdfilter } , \
+    { 22, &x2cModel.blocks.sFOC_main.sPLLEstimator.bEqfilter } , \
+    { 23, &x2cModel.blocks.sFOC_main.sPLLEstimator.bPark_MCHP } , \
+    { 24, &x2cModel.blocks.sFOC_main.sPLLEstimator.sSpeed_Estim_Superblock.bAdd } , \
+    { 25, &x2cModel.blocks.sFOC_main.sPLLEstimator.sSpeed_Estim_Superblock.bAutoSwitch } , \
+    { 26, &x2cModel.blocks.sFOC_main.sPLLEstimator.sSpeed_Estim_Superblock.bGain } , \
+    { 27, &x2cModel.blocks.sFOC_main.sPLLEstimator.sSpeed_Estim_Superblock.bSub } , \
+    { 28, &x2cModel.blocks.sFOC_main.sPLLEstimator.buI } , \
+    { 29, &x2cModel.blocks.sFOC_main.bPark_Clarke_inv_SVM_MCHP } , \
+    { 30, &x2cModel.blocks.sFOC_main.bSaturation } , \
+    { 31, &x2cModel.blocks.sFOC_main.bSaturation1 } , \
+    { 32, &x2cModel.blocks.sFOC_main.bSin3Gen } , \
+    { 33, &x2cModel.blocks.sFOC_main.bSub_flux } , \
+    { 34, &x2cModel.blocks.sFOC_main.bSub_torque } , \
+    { 35, &x2cModel.blocks.bGain } , \
+    { 36, &x2cModel.blocks.bNot } , \
+    { 37, &x2cModel.blocks.bPosSwitch } , \
+    { 38, &x2cModel.blocks.bSpeedSwitch } , \
+    { 39, &x2cModel.blocks.sspeedPI.bConstant } , \
+    { 40, &x2cModel.blocks.sspeedPI.bConstant1 } , \
+    { 41, &x2cModel.blocks.sspeedPI.bDelay2 } , \
+    { 42, &x2cModel.blocks.sspeedPI.bManualSwitch } , \
+    { 43, &x2cModel.blocks.sspeedPI.bPI_speed } , \
+    { 44, &x2cModel.blocks.sspeedPI.bRateLimiter } , \
+    { 45, &x2cModel.blocks.sspeedPI.bSpeed_error } , \
+    { 46, &x2cModel.blocks.sspeedPI.sperturbation.bAdd } , \
+    { 47, &x2cModel.blocks.sspeedPI.sperturbation.bAutoSwitch } , \
+    { 48, &x2cModel.blocks.sspeedPI.sperturbation.bConstant } , \
+    { 49, &x2cModel.blocks.sspeedPI.sperturbation.bConstant1 } , \
+    { 50, &x2cModel.blocks.sspeedPI.sperturbation.bConstant2 } , \
+    { 51, &x2cModel.blocks.sspeedPI.sperturbation.bConstant3 } , \
+    { 52, &x2cModel.blocks.sspeedPI.sperturbation.bGain } , \
+    { 53, &x2cModel.blocks.sspeedPI.sperturbation.bRateLimiter } , \
+    { 54, &x2cModel.blocks.sspeedPI.sperturbation.bSinGen } , \
+    { 55, &x2cModel.blocks.sstartup.bConstant1 } , \
+    { 56, &x2cModel.blocks.sstartup.bConstant2 } , \
+    { 57, &x2cModel.blocks.sstartup.bConstant5 } , \
+    { 58, &x2cModel.blocks.sstartup.bDelay2 } , \
+    { 59, &x2cModel.blocks.sstartup.bFlux_select } , \
+    { 60, &x2cModel.blocks.sstartup.bFlux_select1 } , \
+    { 61, &x2cModel.blocks.sstartup.bIdRateLimiter } , \
+    { 62, &x2cModel.blocks.sstartup.bIq_select } , \
+    { 63, &x2cModel.blocks.sstartup.bPI_PosErrorCompensator } , \
+    { 64, &x2cModel.blocks.sstartup.bPosError } , \
+    { 65, &x2cModel.blocks.sstartup.bPosSwitch } , \
+    { 66, &x2cModel.blocks.sstartup.bRamp_Up_Current } , \
+    { 67, &x2cModel.blocks.sstartup.sRamp_Up_SB.bConstant4 } , \
+    { 68, &x2cModel.blocks.sstartup.sRamp_Up_SB.bI_Init_Zero } , \
+    { 69, &x2cModel.blocks.sstartup.sRamp_Up_SB.bI_Init_Zero1 } , \
+    { 70, &x2cModel.blocks.sstartup.sRamp_Up_SB.bMult } , \
+    { 71, &x2cModel.blocks.sstartup.sRamp_Up_SB.bRamp_Up_PositionGenerator } , \
+    { 72, &x2cModel.blocks.sstartup.sRamp_Up_SB.bSign } , \
+    { 73, &x2cModel.blocks.sstartup.sRamp_Up_SB.bSpeedLimit } , \
+    { 74, &x2cModel.blocks.sstartup.sRamp_Up_SB.bSpeed_Ramp_UP_I } , \
+    { 75, &x2cModel.blocks.sstartup.sRamp_Up_SB.bTypeConv } , \
+    { 76, &x2cModel.blocks.sstartup.bSequencer } , \
+    { 77, &x2cModel.blocks.sstartup.bTypeConv } , \
+    { 78, &x2cModel.blocks.sstartup.bTypeConv1 } , \
+    { 79, &x2cModel.blocks.sstartup.bTypeConv2 } , \
+    { 98, &x2cScope }
 
 #define INPORT_PARAMID_TABLE \
-    { 82, 2, &x2cModel.inports.bCPU_LOAD } , \
-    { 83, 2, &x2cModel.inports.bI_a } , \
-    { 84, 2, &x2cModel.inports.bI_b } , \
-    { 85, 2, &x2cModel.inports.bI_sum } , \
-    { 86, 2, &x2cModel.inports.bQEI_POS } , \
-    { 87, 2, &x2cModel.inports.bQEI_VEL } , \
-    { 88, 1, &x2cModel.inports.bS2 } , \
-    { 89, 2, &x2cModel.inports.bS3 } , \
-    { 90, 2, &x2cModel.inports.bV_POT } 
+    { 80, 2, &x2cModel.inports.bCPU_LOAD } , \
+    { 81, 2, &x2cModel.inports.bI_a } , \
+    { 82, 2, &x2cModel.inports.bI_b } , \
+    { 83, 2, &x2cModel.inports.bI_sum } , \
+    { 84, 2, &x2cModel.inports.bQEI_POS } , \
+    { 85, 2, &x2cModel.inports.bQEI_VEL } , \
+    { 86, 1, &x2cModel.inports.bSW1 } , \
+    { 87, 1, &x2cModel.inports.bSW2 } , \
+    { 88, 2, &x2cModel.inports.bSW3 } , \
+    { 89, 2, &x2cModel.inports.bV_POT } 
 
 #define OUTPORT_PARAMID_TABLE \
-    { 91, 2, &x2cModel.outports.sFOC_main.bEstimated_angle } , \
-    { 92, 2, &x2cModel.outports.sFOC_main.bEstimated_speed } , \
-    { 93, 1, &x2cModel.outports.bHOME_INIT } , \
-    { 94, 1, &x2cModel.outports.bLED_D17 } , \
-    { 95, 1, &x2cModel.outports.bLED_D2 } , \
-    { 96, 2, &x2cModel.outports.bPWM1 } , \
-    { 97, 2, &x2cModel.outports.bPWM2 } , \
-    { 98, 2, &x2cModel.outports.bPWM3 } 
+    { 90, 2, &x2cModel.outports.sFOC_main.bEstimated_angle } , \
+    { 91, 2, &x2cModel.outports.sFOC_main.bEstimated_speed } , \
+    { 92, 1, &x2cModel.outports.bHOME_INIT } , \
+    { 93, 1, &x2cModel.outports.bLED_LD10 } , \
+    { 94, 2, &x2cModel.outports.bLED_LD11 } , \
+    { 95, 2, &x2cModel.outports.bPWM1 } , \
+    { 96, 2, &x2cModel.outports.bPWM2 } , \
+    { 97, 2, &x2cModel.outports.bPWM3 } 
 
 
 /**********************************************************************************************************************/
@@ -211,7 +210,6 @@ struct x2cModel {
                     SUB_FIP16 bSub;
                 } sSpeed_Estim_Superblock;
                 BEMF_MCHP_FIP16 bBEMF_MCHP;
-                CONSTANT_FIP16 bConstant1;
                 DELAY_FIP16 bDelay1;
                 PT1_FIP16 bEdfilter;
                 PT1_FIP16 bEqfilter;
@@ -257,11 +255,10 @@ struct x2cModel {
             } sperturbation;
             CONSTANT_FIP16 bConstant;
             CONSTANT_FIP16 bConstant1;
+            DELAY_FIP16 bDelay2;
             MANUALSWITCH_FIP16 bManualSwitch;
             PI_FIP16 bPI_speed;
             RATELIMITER_FIP16 bRateLimiter;
-            CONSTANT_BOOL bSpeed_Init;
-            CONSTANT_FIP16 bSpeed_Init1;
             SUB_FIP16 bSpeed_error;
         } sspeedPI;
 /*      Sub-system startup                                                                                            */
@@ -273,19 +270,20 @@ struct x2cModel {
                 CONSTANT_FIP16 bI_Init_Zero1;
                 MULT_FIP16 bMult;
                 UI_FIP16 bRamp_Up_PositionGenerator;
-                SATURATION_FIP16 bSaturation;
                 SIGN_FIP16 bSign;
+                SATURATION_FIP16 bSpeedLimit;
                 I_FIP16 bSpeed_Ramp_UP_I;
                 TYPECONV_FIP16_BOOL bTypeConv;
             } sRamp_Up_SB;
             CONSTANT_FIP16 bConstant1;
             CONSTANT_FIP16 bConstant2;
             CONSTANT_BOOL bConstant5;
+            DELAY_FIP16 bDelay2;
             AUTOSWITCH_FIP16 bFlux_select;
             AUTOSWITCH_FIP16 bFlux_select1;
             RATELIMITER_FIP16 bIdRateLimiter;
             AUTOSWITCH_FIP16 bIq_select;
-            PI_FIP16 bPI;
+            PI_FIP16 bPI_PosErrorCompensator;
             USUB_FIP16 bPosError;
             AUTOSWITCH_FIP16 bPosSwitch;
             CONSTANT_FIP16 bRamp_Up_Current;
@@ -294,13 +292,12 @@ struct x2cModel {
             TYPECONV_FIP16_BOOL bTypeConv1;
             TYPECONV_FIP16_BOOL bTypeConv2;
         } sstartup;
-        CONSTANT_BOOL bConstant3;
         DELAY_FIP16 bDelay1;
         DELAY_FIP16 bDelay2;
         GAIN_FIP16 bGain;
-        MANUALSWITCH_FIP16 bManualSwitch;
-        MANUALSWITCH_FIP16 bManualSwitch1;
         NOT_BOOL bNot;
+        MANUALSWITCH_FIP16 bPosSwitch;
+        MANUALSWITCH_FIP16 bSpeedSwitch;
     } blocks;
 /*  Inports                                                                                                           */
     struct {
@@ -310,8 +307,9 @@ struct x2cModel {
         int16 bI_sum;
         int16 bQEI_POS;
         int16 bQEI_VEL;
-        bool bS2;
-        int16 bS3;
+        bool bSW1;
+        bool bSW2;
+        int16 bSW3;
         int16 bV_POT;
     } inports;
 /*  Outports                                                                                                          */
@@ -322,8 +320,8 @@ struct x2cModel {
             int16* bEstimated_speed;
         } sFOC_main;
         bool* bHOME_INIT;
-        bool* bLED_D17;
-        bool* bLED_D2;
+        bool* bLED_LD10;
+        int16* bLED_LD11;
         int16* bPWM1;
         int16* bPWM2;
         int16* bPWM3;

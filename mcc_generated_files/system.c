@@ -137,8 +137,8 @@
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    INTERRUPT_Initialize();
     CLOCK_Initialize();
+    INTERRUPT_Initialize();
     X2C_Initialise();
     OPA_Initialize();
     UART1_Initialize();

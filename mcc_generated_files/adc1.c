@@ -62,6 +62,7 @@ static void (*ADC1_CH_AN17_VADefaultInterruptHandler)(uint16_t adcVal);
 static void (*ADC1_CH_AN22_VCDefaultInterruptHandler)(uint16_t adcVal);
 static void (*ADC1_CH_AN23_VBDefaultInterruptHandler)(uint16_t adcVal);
 static void (*ADC1_CH_AN0_IADefaultInterruptHandler)(uint16_t adcVal);
+static void (*ADC1_CH_AN1_IBDefaultInterruptHandler)(uint16_t adcVal);
 
 /**
   Section: Driver Interface
@@ -79,8 +80,8 @@ void ADC1_Initialize (void)
     ADCON2H = 0x03;
     // SWCTRG disabled; SHRSAMP disabled; SUSPEND disabled; SWLCTRG disabled; SUSPCIE disabled; CNVCHSEL AN0; REFSEL disabled; 
     ADCON3L = 0x00;
-    // SHREN enabled; C1EN disabled; C0EN enabled; CLKDIV 4; CLKSEL PLL VCO/4; 
-    ADCON3H = (0xC381 & 0xFF00); //Disabling C0EN, C1EN, C2EN, C3EN and SHREN bits
+    // SHREN enabled; C1EN enabled; C0EN enabled; CLKDIV 4; CLKSEL PLL VCO/4; 
+    ADCON3H = (0xC383 & 0xFF00); //Disabling C0EN, C1EN, C2EN, C3EN and SHREN bits
     // SAMC0EN disabled; SAMC1EN disabled; 
     ADCON4L = 0x00;
     // C0CHS AN0; C1CHS AN1; 
@@ -175,6 +176,7 @@ void ADC1_Initialize (void)
     ADC1_SetCH_AN22_VCInterruptHandler(&ADC1_CH_AN22_VC_CallBack);
     ADC1_SetCH_AN23_VBInterruptHandler(&ADC1_CH_AN23_VB_CallBack);
     ADC1_SetCH_AN0_IAInterruptHandler(&ADC1_CH_AN0_IA_CallBack);
+    ADC1_SetCH_AN1_IBInterruptHandler(&ADC1_CH_AN1_IB_CallBack);
     
     // Clearing CH_AN0_IA interrupt flag.
     IFS5bits.ADCAN0IF = 0;
@@ -189,6 +191,8 @@ void ADC1_Initialize (void)
     ADC1_SharedCorePowerEnable();
     // Enabling Power for Core0
     ADC1_Core0PowerEnable();
+    // Enabling Power for Core1
+    ADC1_Core1PowerEnable();
 
     //TRGSRC0 PWM1 Trigger1; TRGSRC1 PWM1 Trigger1; 
     ADTRIG0L = 0x404;
@@ -496,6 +500,32 @@ void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN0Interrupt ( voi
 
     //clear the CH_AN0_IA interrupt flag
     IFS5bits.ADCAN0IF = 0;
+}
+
+void __attribute__ ((weak)) ADC1_CH_AN1_IB_CallBack( uint16_t adcVal )
+{ 
+
+}
+
+void ADC1_SetCH_AN1_IBInterruptHandler(void* handler)
+{
+    ADC1_CH_AN1_IBDefaultInterruptHandler = handler;
+}
+
+void __attribute__ ((weak)) ADC1_CH_AN1_IB_Tasks ( void )
+{
+    uint16_t valCH_AN1_IB;
+
+    if(ADSTATLbits.AN1RDY)
+    {
+        //Read the ADC value from the ADCBUF
+        valCH_AN1_IB = ADCBUF1;
+
+        if(ADC1_CH_AN1_IBDefaultInterruptHandler) 
+        { 
+            ADC1_CH_AN1_IBDefaultInterruptHandler(valCH_AN1_IB); 
+        }
+    }
 }
 
 
