@@ -19,57 +19,11 @@
  * TERMS. 
  */
 
-/* 
- * File:   
- * Author: 
- * Comments:
- * Revision history: 
- */
-
-// This is a guard condition so that contents of this file are not included
-// more than once.  
 #ifndef XC_HEADER_TEMPLATE_H
 #define	XC_HEADER_TEMPLATE_H
 
-#include <xc.h> // include processor files - each processor file is guarded.  
-
-// TODO Insert appropriate #include <>
-
-// TODO Insert C++ class definitions if appropriate
-
-// TODO Insert declarations
-
-// Comment a function and leverage automatic documentation with slash star star
-/**
-    <p><b>Function prototype:</b></p>
+#include <xc.h> 
   
-    <p><b>Summary:</b></p>
-
-    <p><b>Description:</b></p>
-
-    <p><b>Precondition:</b></p>
-
-    <p><b>Parameters:</b></p>
-
-    <p><b>Returns:</b></p>
-
-    <p><b>Example:</b></p>
-    <code>
- 
-    </code>
-
-    <p><b>Remarks:</b></p>
- */
-// TODO Insert declarations or function prototypes (right here) to leverage 
-// live documentation
-
-#ifdef	__cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-    // TODO If C++ is being used, regular C code needs function names to have C 
-    // linkage so the functions can be used by the c code. 
-    
     typedef signed int SFRAC16;
 
     #define Q15(Float_Value)	\
@@ -99,20 +53,15 @@ extern "C" {
     #define SPEED_SAMPLE_FREQ   100             /*In 1/seconds*/
     #define MAX_SPEED   3000                    /*rpm*/
 
-  
-    #define MAX_CURRENT 3.9                     /* Current BEMF_calc block has to be sync with this */
-    #define OPAMP_GAIN  15
-    #define SHUNT_R     0.025
-    #define AD_RES      1024
-    #define REF_VOLT    3.246
 
     #define PWM_MIN     0.02 * LOOPINTCY
     #define PWM_MAX     0.98 * LOOPINTCY
+
+    // HW specific
+    //ADC OPAMP offset compensation
+    #define OFFSET_A (-128)
+    #define OFFSET_B (72)
     
-
-#ifdef	__cplusplus
-}
-#endif /* __cplusplus */
-
+    
 #endif	/* XC_HEADER_TEMPLATE_H */
 

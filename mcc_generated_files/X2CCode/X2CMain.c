@@ -88,9 +88,10 @@ void UpdateInports(void) {
     else  x2cModel.inports.bSW1 = true;
 
     /* ADC */   
-    x2cModel.inports.bI_a = ADC1_ConversionResultGet(CH_AN0_IA);
-    x2cModel.inports.bI_b = ADC1_ConversionResultGet(CH_AN1_IB);
-    x2cModel.inports.bV_POT = ADC1_ConversionResultGet(CH_AN11_POT);
+    x2cModel.inports.bI_a = ADC1_ConversionResultGet(CH_AN0_IA) + OFFSET_A;
+    x2cModel.inports.bI_b = ADC1_ConversionResultGet(CH_AN1_IB) + OFFSET_B;
+    //Shift POT middle position should be zero
+    x2cModel.inports.bV_POT = ADC1_ConversionResultGet(CH_AN11_POT) + 0x8000;
 
     //TODO: Implement QEI functionality for the LVMC board (MCC does not support peripheral)
     //POS1CNTtemp = POS1CNTL;
