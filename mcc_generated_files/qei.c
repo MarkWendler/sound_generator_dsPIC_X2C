@@ -54,7 +54,7 @@ void QEI_Initialize (void){
     
     // Inverted index, QEA, QEB pins
     QEI1IOC = 0x70; 
-    QEI1IOCbits.SWPAB = 1;
+    QEI1IOCbits.SWPAB = 0;
    
     // Enable digital filtering, this is a must!
     QEI1IOCbits.FLTREN = 1; 
