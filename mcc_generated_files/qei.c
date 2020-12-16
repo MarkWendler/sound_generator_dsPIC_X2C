@@ -27,20 +27,19 @@ void QEI_Initialize (void){
  /* QEI Config*/
     
     // Data Direction for QEI
-    TRISDbits.TRISD1 = 1;   /* HA input, RP65 */
-    TRISDbits.TRISD2 = 1;   /* HB input, RP66 */
-    // TRISFbits.TRISF0 = 1;   /* HC input, RPI96 */
+    // MCC configures it, so just in case...
+    TRISCbits.TRISC12 = 1;   /* HA input, RP60 */
+    TRISCbits.TRISC13 = 1;   /* HB input, RP61 */
+    TRISCbits.TRISC14 = 1;   /* HC input, RPI96 */
+    TRISCbits.TRISC15 = 1;   /* HC input, RPI96 */
     
     __builtin_write_RPCON(0x0000); // unlock PPS
-    // PPS for QEI New compatible with PIC32MK
-    RPINR14bits.QEIA1R = 65;
-    RPINR14bits.QEIB1R = 66;   
-    //RPINR15bits.INDX1R = 96;
+    // PPS for QEI LVMC board
+    RPINR14bits.QEIA1R = 60;
+    RPINR14bits.QEIB1R = 61;   
+    RPINR15bits.QEINDX1R = 62;
+    RPINR15bits.QEIHOM1R = 63;
      
-    /* PPS for QEI OLD
-    RPINR14bits.QEA1R = 54;
-    RPINR14bits.QEB1R = 96;
-    */ 
     __builtin_write_RPCON(0x0800); // unlock PPS
     
     QEI1CON = 0x0;

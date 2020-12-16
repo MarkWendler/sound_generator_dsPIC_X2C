@@ -17,7 +17,8 @@
 #warning "Please generate the code from the model!"
 #endif
 
-#include "mcc.h"
+#include "../pin_manager.h"
+#include "../adc1.h"
 #include "../qei.h"
 #include "../../userparms.h"
 
@@ -93,11 +94,10 @@ void UpdateInports(void) {
     //Shift POT middle position should be zero
     x2cModel.inports.bV_POT = ADC1_ConversionResultGet(CH_AN11_POT) + 0x8000;
 
-    //TODO: Implement QEI functionality for the LVMC board (MCC does not support peripheral)
-    //POS1CNTtemp = POS1CNTL;
-    //    x2cModel.inports.bQEI_POS = (int16_t)(__builtin_mulss(POS1CNTtemp,QEI_FACT));  
-    //    x2cModel.inports.bQEI_POS_MECH = (int16_t)(__builtin_mulss(POS1CNTtemp,QEI_FACT_MECH));  
-    //x2cModel.inports.bQEI_VEL = GetQEIVel();
+    //QEI position and speed calculation
+    POS1CNTtemp = POS1CNTL;
+    x2cModel.inports.bQEI_POS = (int16_t)(__builtin_mulss(POS1CNTtemp,QEI_FACT));  
+    x2cModel.inports.bQEI_VEL = GetQEIVel();
     
     x2cModel.inports.bCPU_LOAD = CpuLoad;
     

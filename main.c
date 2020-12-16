@@ -49,6 +49,7 @@
 #include "X2CUtils.h"
 #include "X2CMain.h"
 #include "pin_manager.h"
+#include "qei.h"
 /*
                          Main application
  */
@@ -58,7 +59,8 @@ int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    // Not working
+    QEI_Initialize();
+    //Not working
     //INTERRUPT_GlobalEnable();
     INTCON2bits.GIE = true;
     //Not possible to configure the following:
@@ -66,7 +68,7 @@ int main(void)
     //ADCON1Hbits.FORM = 0b11;
     
     TMR1_Start();
-    
+
     while (1)
     {
         // Add your application code
