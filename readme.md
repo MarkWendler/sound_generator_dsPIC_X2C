@@ -1,10 +1,12 @@
-# MPLAB X Project: mc_foc_sl_fip_dspic33ck_mclv2
+# MPLAB X Project: mc_foc_sl_fip_dspic33ck_lvmc
 
-This is a motor control demo project for [MCLV-2](https://www.microchip.com/Developmenttools/ProductDetails/DM330021-2) development board and [dsPIC33CK256MP508](https://www.microchip.com/wwwproducts/en/dsPIC33CK256MP508) microcontroller . The demo controls a Permanent Magnet Syncronous Motor (3 phase low voltage motor) with Field Oriented Control algorithm in sensorless mode by default, using a PLL speed and rotor position estimator.
+This is a motor control demo project for [Low Voltage Motor Control (LVMC)](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/DM330031) development board and [dsPIC33CK256MP508](https://www.microchip.com/wwwproducts/en/dsPIC33CK256MP508) microcontroller that is populated on the board. 
+
+The demo controls a Permanent Magnet Syncronous Motor (3 phase low voltage motor) with Field Oriented Control algorithm in sensorless mode by default, using a PLL speed and rotor position estimator.
 
 ### Features
 * [Simulation](#simulation) on PC with Scilab
-* Run time [monitoring](#monitoring-signals) (virtual scope)
+* Run-time [monitoring](#monitoring-signals) (virtual scope)
 * **Tuning control parameters in runtime**
 * Current and speed control
 * Sensorless and encoder based operation modes
@@ -13,17 +15,14 @@ This is a motor control demo project for [MCLV-2](https://www.microchip.com/Deve
 * The project is created in [MPLAB X](https://www.microchip.com/mplab/mplab-x-ide)
 
 
-![HW setup](readme_images/MCLV_2_StartMotor.gif)
+![HW setup](readme_images/LVMC_StartMotor.gif)
 
 ## Getting Started
 
 The demo is ready to use with the [listed hardwares below](#hardware).
 
-1. Clone or Download project to mc_foc_sl_fip_dspic33ck_mclv2.x folder. (Keep the folder name)
+1. Clone or Download project to mc_foc_sl_fip_dspic33ck_lvmc.x folder. (Keep the folder name)
 2. [Connect Hardware](#connectors-used)
-   1. Connect programmer/debugger to PC
-   2. Connect power supply
-   3. Connect 3 phase motor to the board
 3. Open project with MPLAB X
 4. Build project then program the HW
 5. Press S3 to start to spin
@@ -31,7 +30,7 @@ The demo is ready to use with the [listed hardwares below](#hardware).
 
 ## Monitoring signals
 
-Demo is shiped with run time monitoring feature. Below signals recorded during a controlled acceleration.
+Demo is shiped with run time monitoring and tuning feature. Below signals are recorded during a controlled acceleration.
 
 ![Monitoring run time signals](readme_images/Scope.gif)
 
@@ -50,7 +49,7 @@ The X2C Communicator tool and its scope feature using the UART to transfer data 
 ![Simulation](readme_images/simulation.jpg)
 ### Run simulation:
 
-1. Open model in Scilab as described above
+1. Open model in Scilab as described [above](#monitoring-signals)
 2. In Scilab File browser right click on run.sce then select "Execute in Scilab"
 
 ![Start Communicator](readme_images/runSimulation.jpg)
@@ -58,21 +57,19 @@ The X2C Communicator tool and its scope feature using the UART to transfer data 
 ## HW/SW Tools
 ### Hardware
 
-* **MCLV-2 dev board:** [DM330021-2](https://www.microchip.com/Developmenttools/ProductDetails/DM330021-2) Low voltage motor control development board with replacable MCU/PIM
-* **dsPIC33CK256MP508 PIM:** [MA330041-1](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/MA330041-1) External OpAmp Plug in module, for the dev board
+* **LVMC dev board:** [DM330031](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/DM330031) Low voltage motor control development board with [dsPIC33CK256MP508] (https://www.microchip.com/wwwproducts/en/dsPIC33CK256MP508) MCU populated on board
 * **Motor:** [AC300022](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/AC300022) 3 phase permanent magnet syncronous motor 24V, 100W 
-* **Programmer/Debugger:** [DV164045](https://www.microchip.com/Developmenttools/ProductDetails/DV164045) MPLAB ICD 4 In-Circuit Debugger
-* **RS232-USB converter:** [MCP2200](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/MCP2200EV-VCP) Any compatible converter
-
+* **Programmer/Debugger:** No need. Programmer/debugger is on board (PKOB4)
+* **RS232-USB converter:** No need. Converter is on board (MCP2200 or PKOB4)
 ### Software
 
 To start the motor control demo, only the MPLAB X IDE and XC16 compiler is required. 
 If SW modification and Runtime Monitoring feature are required then all SW tools will be needed listed here:
 
-* [MPLAB X v5.45:](https://www.microchip.com/mplab/mplab-x-ide) Integrated Development Environment. 
+* [MPLAB X](https://www.microchip.com/mplab/mplab-x-ide) Integrated Development Environment. 
 * [XC16 Compiler:](https://www.microchip.com/mplab/compilers) Compiler for the Microchip 16bit MCUs
 * [Scilab v5.5.2:](https://www.scilab.org/download/5.5.2) Scilab(Scientific Laboratory) is free and open source software for numerical computation providing a powerful computing environment for engineering and scientific applications. (Scilab 6.x is not supported yet)
-* [X2C v6.3:](https://x2c.lcm.at/downloads/) Code generation add-on for SCILAB, that allows the generate C-code of the model including a real-time online debugging interface for monitoring   and modifying model signal.
+* [X2C](https://x2c.lcm.at/downloads/) Code generation add-on for SCILAB, that allows the generate C-code of the model including a real-time online debugging interface for monitoring   and modifying model signal.
 
 ### Built With
 
@@ -85,29 +82,26 @@ If SW modification and Runtime Monitoring feature are required then all SW tools
 
 
 * **M1/M2/M3:** Motor  phases connected 
-* **J2:** 24V Power supply
-* * **RS-232:** Used to connect UART to computer (Optional for run-time monitoring and parameter tuning)
-* **HA/HB:** Motor encoder A and B channels connected (Optional for sensor operation mode)
-* **+5V/GND:** Encoder supply connected (Optional for sensor operation mode)
+* **J1/J2:** 24V Power supply
+* **J13 USB:** PICkit on board 4 (PKOB4) programmer debugger
+* **J6 USB-UART:** Used to connect UART to computer (Optional for run-time monitoring and parameter tuning)
+* **J8 QEA/QEB:** Motor encoder A and B channels connected (Optional for sensor operation mode)
+* **J8 +5V/DGND:** Encoder supply connected (Optional for sensor operation mode)
 
-![Board Connector](readme_images/motor_connect.jpg)  
-![Motor Connector](readme_images\LongHurstConnector.jpg)
+![Board Connector](readme_images/LVMC_Motor_connection.jpg) ![Board Connector](readme_images/LVMC_Encoder_connection.jpg)  
+![Motor Connector](readme_images/LongHurstConnector.jpg)
 
 ### Configuration
 
-* **JP1/2/3:** "Curr" current position
-* **JP4/5:** "UART" position 
-* **Routing:** External OP_AMP routing board connected
-* **PIM:** dsPIC33CK256MP508 External OPAMP Plug-In module is connected
+LVMC board is used in the default configuration. 
 
-![Board settings pic](readme_images/Board_Settings.jpg)
+The LVMC board is capable to configure different signal routing modes by zero Ohm jumper resistors. For details see the [LVMC user guide](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/DM330031). 
 
-
-RS-232 c
-
+* **Routing:** Internal OP_AMP is used
+* **UART:** J6 MCP2200 USB-UART chip is used for X2C run-time debugging 
 ## Peripheral settings and I/O connections: 
 
-   Peripherals are configured by [MCC](https://microchipdeveloper.com/mcc:mccgpio) according to the MCLV-2 board [schematics](https://ww1.microchip.com/downloads/en/DeviceDoc/DS-52080a.pdf) and [PIM](#hardware) pinout.
+   Peripherals are configured by [MCC](https://microchipdeveloper.com/mcc:mccgpio) according to the LVMC board [schematics](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/DM330031).
 
    If you need more details of peripheral configuration, just open MPLAB X then MCC with the MCC button:  ![MCC Button](readme_images/MCC_Button.jpg)
 
