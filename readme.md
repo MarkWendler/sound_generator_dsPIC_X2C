@@ -16,7 +16,7 @@ The demo controls a Permanent Magnet Syncronous Motor (3 phase low voltage motor
 
 
 ![HW setup](readme_images/LVMC_StartMotor.gif)
-
+![HW block diagram](readme_images/BlockDiagram_HW_Setup.png)
 ## Getting Started
 
 The demo is ready to use with the [listed hardwares below](#hardware).
@@ -81,7 +81,7 @@ If SW modification and Runtime Monitoring feature are required then all SW tools
 ### Connectors used:
 
 
-* **M1/M2/M3:** Motor  phases connected 
+* **M1/M2/M3:** Motor  phases connected (Sequence is important with sensor mode, but not with sensorless mode)
 * **J1/J2:** 24V Power supply
 * **J13 USB:** PICkit on board 4 (PKOB4) programmer debugger
 * **J6 USB-UART:** Used to connect UART to computer (Optional for run-time monitoring and parameter tuning)
