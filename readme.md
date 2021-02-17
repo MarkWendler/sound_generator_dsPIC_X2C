@@ -82,11 +82,18 @@ If SW modification and Runtime Monitoring feature are required then all SW tools
 
 
 * **M1/M2/M3:** Motor  phases connected (Sequence is important with sensor mode, but not with sensorless mode)
+  * M1 - PHASEA (Motor P1 PIN3)
+  * M2 - PHASEB (Motor P1 PIN2)
+  * M3 - PHASEC (Motor P1 PIN1)
 * **J1/J2:** 24V Power supply
 * **J13 USB:** PICkit on board 4 (PKOB4) programmer debugger
 * **J6 USB-UART:** Used to connect UART to computer (Optional for run-time monitoring and parameter tuning)
 * **J8 QEA/QEB:** Motor encoder A and B channels connected (Optional for sensor operation mode)
+  * QEA - A (Motor P3 PIN2)
+  * QEB - B (Motor P3 PIN3)
 * **J8 +5V/DGND:** Encoder supply connected (Optional for sensor operation mode)
+  * +5V - +5V (Motor P3 PIN1)
+  * DGND - -5V(return) (Motor P3 PIN5)
 
 ![Board Connector](readme_images/LVMC_Motor_connection.jpg) ![Board Connector](readme_images/LVMC_Encoder_connection.jpg)  
 ![Motor Connector](readme_images/LongHurstConnector.jpg)
