@@ -29,6 +29,8 @@
     static int16_t CpuLoad;
     static uint16_t POS1CNTtemp;
 
+    volatile int16_t offset_AN0_IA=0, offset_AN1_IB=0;
+    
 void UpdateInports(void) {
 
     /*
@@ -89,8 +91,8 @@ void UpdateInports(void) {
     else  x2cModel.inports.bSW1 = true;
 
     /* ADC */   
-    x2cModel.inports.bI_a = ADC1_ConversionResultGet(CH_AN0_IA) + OFFSET_A;
-    x2cModel.inports.bI_b = ADC1_ConversionResultGet(CH_AN1_IB) + OFFSET_B;
+    x2cModel.inports.bI_a = ADC1_ConversionResultGet(CH_AN0_IA) - offset_AN0_IA;
+    x2cModel.inports.bI_b = ADC1_ConversionResultGet(CH_AN1_IB) - offset_AN1_IB;
     //Shift POT middle position should be zero
     x2cModel.inports.bV_POT = ADC1_ConversionResultGet(CH_AN11_POT) + 0x8000;
 

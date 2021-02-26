@@ -49,35 +49,101 @@
 #include "X2CUtils.h"
 #include "X2CMain.h"
 #include "pin_manager.h"
-#include "qei.h"
+#include "adc1.h"
+#include "userparms.h"
+#include "interrupt_manager.h"
 /*
                          Main application
  */
 #include <stdbool.h>
 
+//Local function
+bool measureOffset(void);
+void errorTrap(void);
+
 int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    QEI_Initialize();
-    //Not working
-    //INTERRUPT_GlobalEnable();
-    INTCON2bits.GIE = true;
-    //Not possible to configure the following:
-    //Signed fractional conversion format
-    //ADCON1Hbits.FORM = 0b11;
+    INTERRUPT_GlobalDisable(); // Stop control loop operation
     
-    TMR1_Start();
-
+    if( measureOffset() == false){ //if offset measure fail
+        errorTrap(); // Stop operation
+    }
+    
+    INTERRUPT_GlobalEnable(); // Start MC and X2C calculation at interrupt
+    
+    TMR1_Start(); //CPU time measurement
+    
     while (1)
     {
         // Add your application code
         X2C_Communicate(); // X2C scope communication interface task. NON BLOCKING function.
     }
     return 1; 
-    
 }
 
+/**
+ * Measure offset before starting the motor control algorithm
+ * ADC sampling must be triggered automatically
+ * @return true - if measurement successful
+ *         false - if offset is too high
+ */
+
+#define FCY (_XTAL_FREQ/2)
+#include <libpic30.h>
+
+extern int16_t offset_AN0_IA, offset_AN1_IB;
+bool measureOffset(void){
+    uint32_t adcOffsetIa = 0, adcOffsetIb = 0, adcOffsetIc = 0;
+    uint32_t i = 0;
+    bool result = false;
+
+    IO_LD10_SetHigh(); // Signal the measurement is running
+    __delay_ms(10); //wait some measurements
+    /* Taking multiple samples to measure voltage
+     * offset in all the channels */
+    for (i = 0; i < CURRENT_OFFSET_SAMPLE_COUNT; i++)
+    {
+        while(!IFS5bits.ADCAN0IF); //Wait until next conversion not complete
+        
+        /* Sum up the converted results */
+        adcOffsetIa = adcOffsetIa + (int16_t)ADC1_ConversionResultGet(CH_AN0_IA);
+        adcOffsetIb = adcOffsetIb + (int16_t)ADC1_ConversionResultGet(CH_AN1_IB);
+        
+        IFS5bits.ADCAN0IF = 0;
+    }
+    
+    /* Averaging to find current offsets */
+    offset_AN0_IA = (int16_t) (adcOffsetIa >> CURRENT_OFFSET_SAMPLE_SCALER);
+    offset_AN1_IB = (int16_t) (adcOffsetIb >> CURRENT_OFFSET_SAMPLE_SCALER);
+    
+    IO_LD10_SetLow(); // Signal the measurement is finished
+    result = true;
+    
+    //Check, if offset not too high
+    if( offset_AN0_IA > 0) {
+        if( offset_AN0_IA > CURRENT_MAX_OFFSET) result = false; //Offset over the limit
+    }
+    else{
+        if(offset_AN0_IA < (-((int16_t)CURRENT_MAX_OFFSET))) result = false; //Offset over the limit (negative)
+    }
+    if( offset_AN1_IB > 0) {
+        if( offset_AN1_IB > CURRENT_MAX_OFFSET) result = false; //Offset over the limit
+    }
+    else{
+        if(offset_AN1_IB < (-((int16_t)CURRENT_MAX_OFFSET))) result = false; //Offset over the limit (negative)
+    }
+
+    return result;
+}
+
+void errorTrap(void){
+    while(1){
+        __delay_ms(100);
+        IO_LD11_Toggle(); //10Hz blinking
+    }
+}
 /**
  End of File
 */

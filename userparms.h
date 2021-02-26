@@ -23,45 +23,44 @@
 #define	XC_HEADER_TEMPLATE_H
 
 #include <xc.h> 
-  
-    typedef signed int SFRAC16;
 
-    #define Q15(Float_Value)	\
+typedef signed int SFRAC16;
+
+#define Q15(Float_Value)	\
         ((Float_Value < 0.0) ? (SFRAC16)(32768 * (Float_Value) - 0.5) \
         : (SFRAC16)(32767 * (Float_Value) + 0.5))
 
-    #define FOSC 200000000
-    #define PWMFREQUENCY 10000
-    
-        /* encoder */
-    #define PULSE_PER_REV   1000                // ENCODER Pulses
-    #define N_P             5                   // Electrical Pole-Pairs
-    #define QEI_FACT        65536/((PULSE_PER_REV/N_P))
-    #define QEI_FACT_MECH   65536/(PULSE_PER_REV)
+#define FOSC 200000000
+#define PWMFREQUENCY 10000
 
-    //#define QEI_FACT        65535/((PULSE_PER_REV/N_P)-1)
-    
-    #define DEADTIMESEC     0.000001            // Dead time in seconds - 1us
-    #define DFCY            FOSC/2        // Instruction cycle frequency (Hz)
+/* encoder */
+#define PULSE_PER_REV   1000                // ENCODER Pulses
+#define N_P             5                   // Electrical Pole-Pairs
+#define QEI_FACT        65536/((PULSE_PER_REV/N_P))
+#define QEI_FACT_MECH   65536/(PULSE_PER_REV)
 
-    #define DTCY            (1.0/DFCY)          // Instruction cycle period (sec)
-    #define DDEADTIME       (unsigned int)(DEADTIMESEC*DFCY)	// Dead time in dTcys
-    #define MIN_DUTY        (unsigned int)(DDEADTIME/2 + 1)        // Should be >= DDEADTIME/2 for PWM Errata workaround
-    #define LOOPINTCY       (DFCY/PWMFREQUENCY) // Basic loop period in units of Tcy
-    #define PWM_PERIODE     (LOOPINTCY/2)
+//#define QEI_FACT        65535/((PULSE_PER_REV/N_P)-1)
 
-    #define SPEED_SAMPLE_FREQ   100             /*In 1/seconds*/
-    #define MAX_SPEED   3000                    /*rpm*/
+#define DEADTIMESEC     0.000001            // Dead time in seconds - 1us
+#define DFCY            FOSC/2        // Instruction cycle frequency (Hz)
+
+#define DTCY            (1.0/DFCY)          // Instruction cycle period (sec)
+#define DDEADTIME       (unsigned int)(DEADTIMESEC*DFCY)	// Dead time in dTcys
+#define MIN_DUTY        (unsigned int)(DDEADTIME/2 + 1)        // Should be >= DDEADTIME/2 for PWM Errata workaround
+#define LOOPINTCY       (DFCY/PWMFREQUENCY) // Basic loop period in units of Tcy
+#define PWM_PERIODE     (LOOPINTCY/2)
+
+#define SPEED_SAMPLE_FREQ   100             /*In 1/seconds*/
+#define MAX_SPEED   3000                    /*rpm*/
 
 
-    #define PWM_MIN     0.02 * LOOPINTCY
-    #define PWM_MAX     0.98 * LOOPINTCY
+#define PWM_MIN     0.02 * LOOPINTCY
+#define PWM_MAX     0.98 * LOOPINTCY
 
-    // HW specific
-    //ADC OPAMP offset compensation
-    #define OFFSET_A (-128)
-    #define OFFSET_B (72)
-    
+//---- Parameters for auto offset compensation -------//
+#define CURRENT_OFFSET_SAMPLE_COUNT 1024 //Number of samples for avaraging
+#define CURRENT_OFFSET_SAMPLE_SCALER  10 //Backshifting of the result of the avaraging
+#define CURRENT_MAX_OFFSET 0x00FF // Maximum offset that still accaptable, above that error
     
 #endif	/* XC_HEADER_TEMPLATE_H */
 
