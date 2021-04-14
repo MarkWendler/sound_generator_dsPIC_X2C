@@ -7,7 +7,7 @@ tic();
 exec("./initProject.sce");
 
 
-importXcosDiagram("MC_FOC_SL_FIP_dsPIC33CK__INT_LVMC.zcos");
+importXcosDiagram("MC_FOC_SL_FIP_dsPIC33CK_LVMC.zcos");
 
 xcos_simulate(scs_m, 4);
 xdel(winsid());

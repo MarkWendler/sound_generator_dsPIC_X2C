@@ -1,10 +1,10 @@
 @echo off
 
-set PROJECT_ROOT= C:\_bitbucket\mc_foc_sl_fip_dspic33ck_int_lvmc.x
+set PROJECT_ROOT= C:\_projects\mc_foc_sl_fip_dspic33ck_lvmc.x
 set MPLABX_ROOT=C:\Program Files\Microchip\MPLABX\v5.45
 set DEVICE=33CK256MP508
 set TOOL=Supported device not found. Please programm it manually!
-set HEXFILE=/dist/default/production/mc_foc_sl_fip_dspic33ck_int_lvmc.X.production.hex
+set HEXFILE=/dist/default/production/mc_foc_sl_fip_dspic33ck_lvmc.X.production.hex
 
 :: log file to current users' desktop
 ::set BATCHLOG=%USERPROFILE%\Desktop\batchlog.txt

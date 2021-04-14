@@ -13,11 +13,11 @@
   @Description
     This header file provides APIs for driver for ADC1.
     Generation Information :
-        Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
+        Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.169.0
         Device            :  dsPIC33CK256MP508
     The generated drivers are tested against the following:
-        Compiler          :  XC16 v1.61
-        MPLAB 	          :  MPLAB X v5.45
+        Compiler          :  XC16 v1.50
+        MPLAB 	          :  MPLAB X v5.40
 */
 
 /*
@@ -98,8 +98,6 @@ typedef enum
     CH_AN17_VA,//Channel Name:AN17   Assigned to:Shared Channel
     CH_AN22_VC,//Channel Name:AN22   Assigned to:Shared Channel
     CH_AN23_VB,//Channel Name:AN23   Assigned to:Shared Channel
-    channel_AN24,//Channel Name:AN24   Assigned to:Shared Channel
-    channel_AN25,//Channel Name:AN25   Assigned to:Shared Channel
     CH_AN0_IA,//Channel Name:AN0   Assigned to:Dedicated Core0
     CH_AN1_IB,//Channel Name:AN1   Assigned to:Dedicated Core1
 } ADC1_CHANNEL;
@@ -416,12 +414,6 @@ inline static uint16_t ADC1_ConversionResultGet( ADC1_CHANNEL channel )
         case CH_AN23_VB:
                 result = ADCBUF23;
                 break;
-        case channel_AN24:
-                result = ADCBUF24;
-                break;
-        case channel_AN25:
-                result = ADCBUF25;
-                break;
         case CH_AN0_IA:
                 result = ADCBUF0;
                 break;
@@ -500,12 +492,6 @@ inline static bool ADC1_IsConversionComplete(ADC1_CHANNEL channel)
                 break;
         case CH_AN23_VB:
                 status = ADSTATHbits.AN23RDY;
-                break;
-        case channel_AN24:
-                status = ADSTATHbits.AN24RDY;
-                break;
-        case channel_AN25:
-                status = ADSTATHbits.AN25RDY;
                 break;
         case CH_AN0_IA:
                 status = ADSTATLbits.AN0RDY;
@@ -747,12 +733,6 @@ inline static void ADC1_IndividualChannelInterruptEnable(ADC1_CHANNEL channel)
         case CH_AN23_VB:
                 IEC7bits.ADCAN23IE = 1;
                 break;
-        case channel_AN24:
-                IEC12bits.ADCAN24IE = 1;
-                break;
-        case channel_AN25:
-                IEC12bits.ADCAN25IE = 1;
-                break;
         case CH_AN0_IA:
                 IEC5bits.ADCAN0IE = 1;
                 break;
@@ -814,12 +794,6 @@ inline static void ADC1_IndividualChannelInterruptDisable(ADC1_CHANNEL channel)
         case CH_AN23_VB:
                 IEC7bits.ADCAN23IE = 0;
                 break;
-        case channel_AN24:
-                IEC12bits.ADCAN24IE = 0;
-                break;
-        case channel_AN25:
-                IEC12bits.ADCAN25IE = 0;
-                break;
         case CH_AN0_IA:
                 IEC5bits.ADCAN0IE = 0;
                 break;
@@ -879,12 +853,6 @@ inline static void ADC1_IndividualChannelInterruptFlagClear(ADC1_CHANNEL channel
                 break;
         case CH_AN23_VB:
                 IFS7bits.ADCAN23IF = 0;
-                break;
-        case channel_AN24:
-                IFS12bits.ADCAN24IF = 0;
-                break;
-        case channel_AN25:
-                IFS12bits.ADCAN25IF = 0;
                 break;
         case CH_AN0_IA:
                 IFS5bits.ADCAN0IF = 0;
@@ -1456,98 +1424,6 @@ void ADC1_SetCH_AN23_VBInterruptHandler(void* handler);
     </code>
 */
 void ADC1_CH_AN23_VB_Tasks(void);
-
-/**
-  @Summary
-    ADC1 channel_AN24 callback routine.
-
-  @Description
-    This routine is a ADC1 channel_AN24 callback function.
-  
-  @Preconditions
-    None.
-
-  @Param
-    None.
-
-  @Returns
-    None
- 
-  @Example 
-    <code>
-        ADC1_Setchannel_AN24InterruptHandler(&ADC1_channel_AN24_CallBack);
-    </code>
-*/
-void ADC1_channel_AN24_CallBack(uint16_t adcVal);
-
-/**
-  @Summary
-    Assigns a function pointer with a ADC1 channel_AN24 callback address.
-
-  @Description
-    This routine assigns a function pointer with a ADC1 channel_AN24 callback address.
-  
-  @Preconditions
-    None.
-
-  @Param
-    Address of the callback routine.
-
-  @Returns
-    None
- 
-  @Example 
-    <code>
-        ADC1_Setchannel_AN24InterruptHandler(&ADC1_channel_AN24_CallBack);
-    </code>
-*/
-void ADC1_Setchannel_AN24InterruptHandler(void* handler);
-
-/**
-  @Summary
-    ADC1 channel_AN25 callback routine.
-
-  @Description
-    This routine is a ADC1 channel_AN25 callback function.
-  
-  @Preconditions
-    None.
-
-  @Param
-    None.
-
-  @Returns
-    None
- 
-  @Example 
-    <code>
-        ADC1_Setchannel_AN25InterruptHandler(&ADC1_channel_AN25_CallBack);
-    </code>
-*/
-void ADC1_channel_AN25_CallBack(uint16_t adcVal);
-
-/**
-  @Summary
-    Assigns a function pointer with a ADC1 channel_AN25 callback address.
-
-  @Description
-    This routine assigns a function pointer with a ADC1 channel_AN25 callback address.
-  
-  @Preconditions
-    None.
-
-  @Param
-    Address of the callback routine.
-
-  @Returns
-    None
- 
-  @Example 
-    <code>
-        ADC1_Setchannel_AN25InterruptHandler(&ADC1_channel_AN25_CallBack);
-    </code>
-*/
-void ADC1_Setchannel_AN25InterruptHandler(void* handler);
 
 
 /**
