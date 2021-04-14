@@ -1,4 +1,4 @@
-/**
+/*
   UART1 Generated Driver API Header File
 
   @Company
@@ -13,11 +13,11 @@
   @Description
     This header file provides APIs for driver for UART1.
     Generation Information :
-        Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.169.0
+        Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
         Device            :  dsPIC33CK256MP508
     The generated drivers are tested against the following:
-        Compiler          :  XC16 v1.50
-        MPLAB             :  MPLAB X v5.40
+        Compiler          :  XC16 v1.61
+        MPLAB             :  MPLAB X v5.45
 */
 
 /*
@@ -45,7 +45,7 @@
 #ifndef _UART1_H
 #define _UART1_H
 
-/**
+/*
   Section: Included Files
 */
 
@@ -58,11 +58,11 @@
 
 #endif
 
-/**
+/*
   Section: UART1 APIs
 */
 
-/**
+/*
   @Summary
     Initialization routine that takes inputs from the UART1 GUI.
 
@@ -86,7 +86,7 @@
 
 void UART1_Initialize(void);
 
-/**
+/*
   @Summary
     Read a byte of data from the UART1.
 
@@ -108,7 +108,7 @@ void UART1_Initialize(void);
 
 uint8_t UART1_Read(void);
 
-/**
+/*
   @Summary
     Writes a byte of data to the UART1.
 
@@ -129,7 +129,7 @@ uint8_t UART1_Read(void);
 
 void UART1_Write(uint8_t txData);
 
-/**
+/*
   @Description
     Indicates of there is data available to read.
 
@@ -139,7 +139,7 @@ void UART1_Write(uint8_t txData);
 */
 bool UART1_IsRxReady(void);
 
-/**
+/*
   @Description
     Indicates if a byte can be written.
  
@@ -149,7 +149,7 @@ bool UART1_IsRxReady(void);
 */
 bool UART1_IsTxReady(void);
 
-/**
+/*
   @Description
     Indicates if all bytes have been transferred.
  
@@ -241,7 +241,7 @@ void __attribute__((deprecated)) UART1_Enable(void);
 
 void __attribute__((deprecated)) UART1_Disable(void);
 
-/**
+/*
   @Summary
     Returns the transmitter and receiver status
 
