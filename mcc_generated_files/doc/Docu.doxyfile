@@ -33,7 +33,7 @@ DOXYFILE_ENCODING = UTF-8
 # The default value is: My Project.
 
 # Changed
-PROJECT_NAME = mc_foc_sl_fip_dspic33ck_int_lvmc
+PROJECT_NAME = noisegen_fip_dspic33ck_int_lvmc
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version

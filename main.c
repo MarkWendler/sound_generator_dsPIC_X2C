@@ -93,9 +93,9 @@ int main(void)
 #define FCY (_XTAL_FREQ/2)
 #include <libpic30.h>
 
-extern int16_t offset_AN0_IA, offset_AN1_IB;
+extern int16_t offset_AN0_IA, offset_AN1_IB, offset_AN4_IBUS;
 bool measureOffset(void){
-    uint32_t adcOffsetIa = 0, adcOffsetIb = 0, adcOffsetIc = 0;
+    uint32_t adcOffsetIa = 0, adcOffsetIb = 0, adcOffsetIbus = 0;
     uint32_t i = 0;
     bool result = false;
 
@@ -110,14 +110,15 @@ bool measureOffset(void){
         /* Sum up the converted results */
         adcOffsetIa = adcOffsetIa + (int16_t)ADC1_ConversionResultGet(CH_AN0_IA);
         adcOffsetIb = adcOffsetIb + (int16_t)ADC1_ConversionResultGet(CH_AN1_IB);
-        
+        adcOffsetIbus = adcOffsetIbus + (int16_t)ADC1_ConversionResultGet(CH_AN4_IBUS);
         IFS5bits.ADCAN0IF = 0;
     }
     
     /* Averaging to find current offsets */
     offset_AN0_IA = (int16_t) (adcOffsetIa >> CURRENT_OFFSET_SAMPLE_SCALER);
     offset_AN1_IB = (int16_t) (adcOffsetIb >> CURRENT_OFFSET_SAMPLE_SCALER);
-    
+    offset_AN4_IBUS = (int16_t) (adcOffsetIbus >> CURRENT_OFFSET_SAMPLE_SCALER);
+            
     IO_LD10_SetLow(); // Signal the measurement is finished
     result = true;
     
@@ -134,7 +135,12 @@ bool measureOffset(void){
     else{
         if(offset_AN1_IB < (-((int16_t)CURRENT_MAX_OFFSET))) result = false; //Offset over the limit (negative)
     }
-
+    if( offset_AN4_IBUS > 0) {
+        if( offset_AN4_IBUS > CURRENT_MAX_OFFSET) result = false; //Offset over the limit
+    }
+    else{
+        if(offset_AN4_IBUS < (-((int16_t)CURRENT_MAX_OFFSET))) result = false; //Offset over the limit (negative)
+    }
     return result;
 }
 

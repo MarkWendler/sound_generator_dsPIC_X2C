@@ -30,16 +30,8 @@ typedef signed int SFRAC16;
         ((Float_Value < 0.0) ? (SFRAC16)(32768 * (Float_Value) - 0.5) \
         : (SFRAC16)(32767 * (Float_Value) + 0.5))
 
-#define FOSC 200000000
-#define PWMFREQUENCY 10000
-
-/* encoder */
-#define PULSE_PER_REV   1000                // ENCODER Pulses
-#define N_P             5                   // Electrical Pole-Pairs
-#define QEI_FACT        65536/((PULSE_PER_REV/N_P))
-#define QEI_FACT_MECH   65536/(PULSE_PER_REV)
-
-//#define QEI_FACT        65535/((PULSE_PER_REV/N_P)-1)
+#define FOSC            200000000
+#define PWMFREQUENCY    100000 //100kHz
 
 #define DEADTIMESEC     0.000001            // Dead time in seconds - 1us
 #define DFCY            FOSC/2        // Instruction cycle frequency (Hz)
@@ -49,10 +41,6 @@ typedef signed int SFRAC16;
 #define MIN_DUTY        (unsigned int)(DDEADTIME/2 + 1)        // Should be >= DDEADTIME/2 for PWM Errata workaround
 #define LOOPINTCY       (DFCY/PWMFREQUENCY) // Basic loop period in units of Tcy
 #define PWM_PERIODE     (LOOPINTCY/2)
-
-#define SPEED_SAMPLE_FREQ   100             /*In 1/seconds*/
-#define MAX_SPEED   3000                    /*rpm*/
-
 
 #define PWM_MIN     0.02 * LOOPINTCY
 #define PWM_MAX     0.98 * LOOPINTCY

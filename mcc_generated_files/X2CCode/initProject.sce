@@ -89,4 +89,4 @@ end
 // clean up
 clear("fs", "CurrentDir", "vers", "opt", "arc", "ProjectPath")
 mprintf("- Init done and opening model...\n");
-xcos("mc_foc_sl_fip_dspic33ck_int_lvmc.zcos");
+xcos("noisegen_fip_dspic33ck_int_lvmc.zcos");

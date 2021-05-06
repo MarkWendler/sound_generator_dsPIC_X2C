@@ -13,11 +13,11 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.169.0
+        Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
         Device            :  dsPIC33CK256MP508
     The generated drivers are tested against the following:
-        Compiler          :  XC16 v1.50
-        MPLAB             :  MPLAB X v5.40
+        Compiler          :  XC16 v1.61
+        MPLAB             :  MPLAB X v5.45
 */
 
 /*
@@ -124,15 +124,15 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
-#include "pwm.h"
-#include "tmr1.h"
-#include "opa.h"
 #include "X2CMain.h"
 #include "X2CUtils.h"
 #include "adc1.h"
-#include "uart1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
+#include "opa.h"
+#include "pwm.h"
+#include "uart1.h"
+#include "tmr1.h"
 
 void SYSTEM_Initialize(void)
 {
@@ -145,7 +145,6 @@ void SYSTEM_Initialize(void)
     ADC1_Initialize();
     PWM_Initialize();
     TMR1_Initialize();
-    QEI_Initialize();
     INTERRUPT_GlobalEnable();
     SYSTEM_CORCONModeOperatingSet(CORCON_MODE_PORVALUES);
 }

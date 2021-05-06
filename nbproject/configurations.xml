@@ -59,7 +59,6 @@
         <itemPath>mcc_generated_files/system_types.h</itemPath>
         <itemPath>mcc_generated_files/uart1.h</itemPath>
         <itemPath>mcc_generated_files/tmr1.h</itemPath>
-        <itemPath>mcc_generated_files/qei.h</itemPath>
         <itemPath>mcc_generated_files/adc_module_features.h</itemPath>
         <itemPath>mcc_generated_files/pwm_module_features.h</itemPath>
         <itemPath>mcc_generated_files/opa.h</itemPath>
@@ -148,7 +147,6 @@
         <itemPath>mcc_generated_files/pwm.c</itemPath>
         <itemPath>mcc_generated_files/uart1.c</itemPath>
         <itemPath>mcc_generated_files/tmr1.c</itemPath>
-        <itemPath>mcc_generated_files/qei.c</itemPath>
         <itemPath>mcc_generated_files/opa.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
