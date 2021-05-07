@@ -126,19 +126,19 @@
 #include "system_types.h"
 #include "X2CMain.h"
 #include "X2CUtils.h"
-#include "adc1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
+#include "uart1.h"
 #include "opa.h"
 #include "pwm.h"
-#include "uart1.h"
+#include "adc1.h"
 #include "tmr1.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    CLOCK_Initialize();
     INTERRUPT_Initialize();
+    CLOCK_Initialize();
     X2C_Initialise();
     OPA_Initialize();
     UART1_Initialize();

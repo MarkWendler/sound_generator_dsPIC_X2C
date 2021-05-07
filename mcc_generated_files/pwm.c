@@ -188,14 +188,19 @@ void PWM_Initialize (void)
     PG1TRIGC = 0x00;
     // TRIGC 0; 
     PG2TRIGC = 0x00;
-    // DTL 100; 
-    PG1DTL = 0x64;
-    // DTL 100; 
-    PG2DTL = 0x64;
-    // DTH 100; 
-    PG1DTH = 0x64;
-    // DTH 100; 
-    PG2DTH = 0x64;
+    // DTL 60; 
+    PG1DTL = 0x3C;
+    // DTL 60; 
+    PG2DTL = 0x3C;
+    // DTH 60; 
+    PG1DTH = 0x3C;
+    // DTH 60; 
+    PG2DTH = 0x3C;
+    
+    //PWM runs 100kHz
+    //We would like to run ADC and control loop at 20kHz
+    //Therefore we use x5 Postscaler for ADC trigger
+    PG1EVTLbits.ADTR1PS = 5-1;
     
 
     // HREN disabled; MODSEL Center-Aligned; TRGCNT 1; CLKSEL Master clock; ON enabled; 

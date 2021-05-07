@@ -135,12 +135,12 @@ bool measureOffset(void){
     else{
         if(offset_AN1_IB < (-((int16_t)CURRENT_MAX_OFFSET))) result = false; //Offset over the limit (negative)
     }
-    if( offset_AN4_IBUS > 0) {
-        if( offset_AN4_IBUS > CURRENT_MAX_OFFSET) result = false; //Offset over the limit
-    }
-    else{
-        if(offset_AN4_IBUS < (-((int16_t)CURRENT_MAX_OFFSET))) result = false; //Offset over the limit (negative)
-    }
+//    if( offset_AN4_IBUS > 0) {
+//        if( offset_AN4_IBUS > CURRENT_MAX_OFFSET) result = false; //Offset over the limit
+//    }
+//    else{
+//        if(offset_AN4_IBUS < (-((int16_t)CURRENT_MAX_OFFSET))) result = false; //Offset over the limit (negative)
+//    }
     return result;
 }
 

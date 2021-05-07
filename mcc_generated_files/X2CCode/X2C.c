@@ -1,7 +1,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: noisegen_fip_dspic33ck_int_lvmc                                                                             */
-/* Date:  2021-05-06 13:04                                                                                            */
+/* Date:  2021-05-07 12:08                                                                                            */
 
 /* X2C-Version: 6.3.2018                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -78,32 +78,41 @@ void X2C_Init()
     /**                                          Initialize Block Parameters                                         **/
     /******************************************************************************************************************/
 
-    /* Block: Constant                                                                                                */
-    /* Value = 0.1                                                                                                    */
-    x2cModel.blocks.bConstant.K = 3277;
+    /* Block: Abs                                                                                                     */
 
     /* Block: Constant1                                                                                               */
     /* Value = 0.0                                                                                                    */
     x2cModel.blocks.bConstant1.K = 0;
 
     /* Block: Constant2                                                                                               */
-    /* Value = 1.0                                                                                                    */
-    x2cModel.blocks.bConstant2.K = 1;
+    /* Value = 0.01                                                                                                   */
+    x2cModel.blocks.bConstant2.K = 328;
 
-    /* Block: Constant3                                                                                               */
-    /* Value = 0.1                                                                                                    */
-    x2cModel.blocks.bConstant3.K = 3277;
+    /* Block: Constant4                                                                                               */
+    /* Value = 1.0                                                                                                    */
+    x2cModel.blocks.bConstant4.K = 1;
+
+    /* Block: Gain                                                                                                    */
+    /* Gain = 5.0                                                                                                     */
+    x2cModel.blocks.bGain.V = 20480;
+    x2cModel.blocks.bGain.sfr = 12;
 
     /* Block: ManualSwitch                                                                                            */
     /* Toggle = 0.0                                                                                                   */
     x2cModel.blocks.bManualSwitch.Toggle = 0;
 
+    /* Block: ManualSwitch1                                                                                           */
+    /* Toggle = 0.0                                                                                                   */
+    x2cModel.blocks.bManualSwitch1.Toggle = 0;
+
+    /* Block: Mult                                                                                                    */
+
     /* Block: PI_current                                                                                              */
-    /* Kp = 0.8                                                                                                       */
-    /* Ki = 5.0                                                                                                       */
+    /* Kp = 0.5                                                                                                       */
+    /* Ki = 0.0                                                                                                       */
     /* ts_fact = 1.0                                                                                                  */
-    x2cModel.blocks.bPI_current.b0 = 8;
-    x2cModel.blocks.bPI_current.b1 = 26214;
+    x2cModel.blocks.bPI_current.b0 = 0;
+    x2cModel.blocks.bPI_current.b1 = 16384;
     x2cModel.blocks.bPI_current.sfrb0 = 15;
     x2cModel.blocks.bPI_current.sfrb1 = 15;
     x2cModel.blocks.bPI_current.i_old = 0;
@@ -118,6 +127,16 @@ void X2C_Init()
     x2cModel.blocks.bSinGen.phase = 0;
     x2cModel.blocks.bSinGen.offset = 0;
     x2cModel.blocks.bSinGen.phi = 0;
+
+    /* Block: Sub                                                                                                     */
+
+    /* Block: uI                                                                                                      */
+    /* Ki = 1.0                                                                                                       */
+    /* ts_fact = 1.0                                                                                                  */
+    x2cModel.blocks.buI.b0 = 2;
+    x2cModel.blocks.buI.sfr = 15;
+    x2cModel.blocks.buI.i_old = 0;
+    x2cModel.blocks.buI.enable_old = 0;
 
 
     /******************************************************************************************************************/
@@ -134,33 +153,65 @@ void X2C_Init()
     /**                                               Link Block Inputs                                              **/
     /******************************************************************************************************************/
 
-    /* Block Constant                                                                                                 */
+    /* Block Abs                                                                                                      */
+    x2cModel.blocks.bAbs.In =
+        &x2cModel.inports.bV_POT;
 
     /* Block Constant1                                                                                                */
 
     /* Block Constant2                                                                                                */
 
-    /* Block Constant3                                                                                                */
+    /* Block Constant4                                                                                                */
+
+    /* Block Gain                                                                                                     */
+    x2cModel.blocks.bGain.In =
+        &x2cModel.inports.bCurrent;
 
     /* Block ManualSwitch                                                                                             */
     x2cModel.blocks.bManualSwitch.In1 =
-        &x2cModel.blocks.bSinGen.u;
+        &x2cModel.inports.bV_POT;
     x2cModel.blocks.bManualSwitch.In2 =
+        &x2cModel.blocks.buI.Out;
+
+    /* Block ManualSwitch1                                                                                            */
+    x2cModel.blocks.bManualSwitch1.In1 =
+        &x2cModel.blocks.bSinGen.u;
+    x2cModel.blocks.bManualSwitch1.In2 =
         &x2cModel.blocks.bPI_current.Out;
+
+    /* Block Mult                                                                                                     */
+    x2cModel.blocks.bMult.In1 =
+        &x2cModel.blocks.bManualSwitch.Out;
+    x2cModel.blocks.bMult.In2 =
+        &x2cModel.blocks.bManualSwitch.Out;
 
     /* Block PI_current                                                                                               */
     x2cModel.blocks.bPI_current.In =
-        &x2cModel.blocks.bSinGen.u;
+        &x2cModel.blocks.bSub.Out;
     x2cModel.blocks.bPI_current.Init =
         &x2cModel.blocks.bConstant1.Out;
     x2cModel.blocks.bPI_current.Enable =
-        &x2cModel.blocks.bConstant2.Out;
+        &x2cModel.blocks.bConstant4.Out;
 
     /* Block SinGen                                                                                                   */
     x2cModel.blocks.bSinGen.A =
-        &x2cModel.blocks.bConstant.Out;
+        &x2cModel.blocks.bConstant2.Out;
     x2cModel.blocks.bSinGen.f =
-        &x2cModel.blocks.bConstant3.Out;
+        &x2cModel.blocks.bMult.Out;
+
+    /* Block Sub                                                                                                      */
+    x2cModel.blocks.bSub.Plus =
+        &x2cModel.blocks.bSinGen.u;
+    x2cModel.blocks.bSub.Minus =
+        &x2cModel.blocks.bGain.Out;
+
+    /* Block uI                                                                                                       */
+    x2cModel.blocks.buI.In =
+        &x2cModel.blocks.bAbs.Out;
+    x2cModel.blocks.buI.Init =
+        &x2cModel.blocks.bConstant1.Out;
+    x2cModel.blocks.buI.Enable =
+        &x2cModel.blocks.bConstant4.Out;
 
     /******************************************************************************************************************/
     /**                                                 Link Outports                                                **/
@@ -168,18 +219,23 @@ void X2C_Init()
     x2cModel.outports.bLED_LD10 =
         &x2cModel.inports.bSW2;
     x2cModel.outports.bPWM1 =
-        &x2cModel.blocks.bManualSwitch.Out;
+        &x2cModel.blocks.bManualSwitch1.Out;
 
     /******************************************************************************************************************/
     /**                                           Run Block Init Functions                                           **/
     /******************************************************************************************************************/
-    Constant_FiP16_Init(&x2cModel.blocks.bConstant);
+    Abs_FiP16_Init(&x2cModel.blocks.bAbs);
     Constant_Int16_Init(&x2cModel.blocks.bConstant1);
-    Constant_Bool_Init(&x2cModel.blocks.bConstant2);
-    Constant_FiP16_Init(&x2cModel.blocks.bConstant3);
+    Constant_FiP16_Init(&x2cModel.blocks.bConstant2);
+    Constant_Bool_Init(&x2cModel.blocks.bConstant4);
+    Gain_FiP16_Init(&x2cModel.blocks.bGain);
     ManualSwitch_FiP16_Init(&x2cModel.blocks.bManualSwitch);
+    ManualSwitch_FiP16_Init(&x2cModel.blocks.bManualSwitch1);
+    Mult_FiP16_Init(&x2cModel.blocks.bMult);
     PI_FiP16_Init(&x2cModel.blocks.bPI_current);
     SinGen_FiP16_Init(&x2cModel.blocks.bSinGen);
+    Sub_FiP16_Init(&x2cModel.blocks.bSub);
+    uI_FiP16_Init(&x2cModel.blocks.buI);
     Scope_Main_Init(&x2cScope);
 
     /* Initialize TableStruct tables                                                                                  */
@@ -202,9 +258,15 @@ void X2C_Update(void)
 /* X2C_Update for blocks with 1*Ts                                                                                    */
 void X2C_Update_1(void)
 {
-    SinGen_FiP16_Update(&x2cModel.blocks.bSinGen);
-    PI_FiP16_Update(&x2cModel.blocks.bPI_current);
+    Abs_FiP16_Update(&x2cModel.blocks.bAbs);
+    Gain_FiP16_Update(&x2cModel.blocks.bGain);
+    uI_FiP16_Update(&x2cModel.blocks.buI);
     ManualSwitch_FiP16_Update(&x2cModel.blocks.bManualSwitch);
+    Mult_FiP16_Update(&x2cModel.blocks.bMult);
+    SinGen_FiP16_Update(&x2cModel.blocks.bSinGen);
+    Sub_FiP16_Update(&x2cModel.blocks.bSub);
+    PI_FiP16_Update(&x2cModel.blocks.bPI_current);
+    ManualSwitch_FiP16_Update(&x2cModel.blocks.bManualSwitch1);
     Scope_Main_Update(&x2cScope);
 }
 

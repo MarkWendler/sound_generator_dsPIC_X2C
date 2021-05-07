@@ -71,9 +71,9 @@ void UpdateInports(void) {
     else  x2cModel.inports.bSW2 = true;
     
     /* ADC */   
-    IA = ADC1_ConversionResultGet(CH_AN0_IA) - offset_AN0_IA;
-    IB = ADC1_ConversionResultGet(CH_AN1_IB) - offset_AN1_IB;
-    x2cModel.inports.bCurrent = ADC1_ConversionResultGet(CH_AN4_IBUS) - offset_AN4_IBUS;
+    //x2cModel.inports.bCurrent = ADC1_ConversionResultGet(CH_AN0_IA) - offset_AN0_IA;
+    x2cModel.inports.bCurrent = ADC1_ConversionResultGet(CH_AN1_IB) - offset_AN1_IB;
+    //x2cModel.inports.bCurrent = ADC1_ConversionResultGet(CH_AN4_IBUS) - offset_AN4_IBUS;
     
     //Shift POT middle position should be zero
     x2cModel.inports.bV_POT = ADC1_ConversionResultGet(CH_AN11_POT) + 0x8000;

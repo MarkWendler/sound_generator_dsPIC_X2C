@@ -185,10 +185,6 @@ void ADC1_Initialize (void)
     // Enabling CH_AN0_IA interrupt.
     IEC5bits.ADCAN0IE = 1;
     
-    //PWM runs 100kHz
-    //We would like to run ADC and control loop at 20kHz
-    //Therefore we use x5 Postscaler for ADC trigger
-    PG1EVTLbits.ADTR1PS = 5-1;
 
     // Setting WARMTIME bit
     ADCON5Hbits.WARMTIME = 0xF;

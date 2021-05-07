@@ -16225,7 +16225,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorDeadTimeHigh"/>
-         <value>5.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-7</value>
+         <value>0.0000003</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorDeadTimeHighRangeMax"/>
@@ -16237,7 +16237,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorDeadTimeLow"/>
-         <value>5.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-7</value>
+         <value>0.0000003</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="pwmGeneratorDeadTimeLowRangeMax"/>
@@ -36305,11 +36305,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG1DTH"/>
-         <value>100</value>
+         <value>60</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG1DTL"/>
-         <value>100</value>
+         <value>60</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG1EVTH"/>
@@ -36409,11 +36409,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG2DTH"/>
-         <value>100</value>
+         <value>60</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG2DTL"/>
-         <value>100</value>
+         <value>60</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PG2EVTH"/>
@@ -37605,11 +37605,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG1DTH" settingAlias="DTH1"/>
-         <value>100</value>
+         <value>60</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG1DTL" settingAlias="DTL1"/>
-         <value>100</value>
+         <value>60</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG1EVTH" settingAlias="ADTR1OFS"/>
@@ -38161,11 +38161,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG2DTH" settingAlias="DTH2"/>
-         <value>100</value>
+         <value>60</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG2DTL" settingAlias="DTL2"/>
-         <value>100</value>
+         <value>60</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PG2EVTH" settingAlias="ADTR1OFS"/>
@@ -55679,7 +55679,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\RamTable.h</file>
-         <hash>66ba5ec26227b08dcd7b8c1d6b6853c9442a6f4e8fd85272da546a35468f9479</hash>
+         <hash>e54272a6aa5b53719929d622ac5cc2d5fa452ca3c559ea11416d5cae65e85818</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>
@@ -55699,7 +55699,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\RamTable.c</file>
-         <hash>ae40ff4a3ea18cf2f40a589ecc1bef120f25992785d3b24556017abead5b3dbd</hash>
+         <hash>d66e4d3a311524cf58266f1c247cd1f17e625ba51b06537136c5e2b1d25c755a</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Controller\Common\Typecast.h</file>
@@ -55735,7 +55735,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\X2CMain.c</file>
-         <hash>1e1adfd499d0623f9adb365a32aaa0893f2643c88b7db054dc9323954fc72ead</hash>
+         <hash>b96e5ce2614feee7d3b520f9794022537ef765ddbb0b48e8ccc50ff5578476d6</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\system.h</file>
@@ -55751,7 +55751,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>f1f7cf5006ec92ee1d9924d44214651c8afb50b7dabfca7108b68f1bcbc8e366</hash>
+         <hash>ab8645ecf40b24438416c27d6e236dd1e0ae63ca1dffac187e7b0687a23bcf2f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\doc\Docu.doxyfile</file>
@@ -55787,11 +55787,11 @@
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>bb0801beaf59d59aaa28eb31b659568dbea7a791d71df320710c8c0cd44b787e</hash>
+         <hash>c9badc7625ffb6a60262692554729ed4dff960c46aaa1d4f3a150d16eb9bb543</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pwm.c</file>
-         <hash>9a3791220803c1d609584a98a630d5e17346e9519f59807bf6e8bdab95482132</hash>
+         <hash>9987da6c932aa9e12d6c476ead652c3462800e6f3320abadd05ebd2d2b66d479</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Library\Math\Controller\lib\libdsPIC33CK_Math.a</file>
@@ -55799,7 +55799,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\FlashTable.h</file>
-         <hash>75157f79151815bad2ae3b1251b1dc8d58d8f93ebb74174ee7822f0a98f8f115</hash>
+         <hash>39b3bef6353a073cd964e2a74aa518b60d997bda63b19b659656fb70fe941893</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\reset.c</file>
@@ -55815,19 +55815,19 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\FlashTable.c</file>
-         <hash>9f8c47b169b2bb84a0d558ef7111fabd2d639166c1ff2091111ed8c7fd148b59</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\adc1.c</file>
-         <hash>07babc8a0037bd1d567fb11c677d516cd9e3cd1ee048e89ec8ee6800997a7813</hash>
+         <hash>3f487ce7fa7a480a40e5cd6b2db303315ece24ff9b2c26a3713dba592b6494a2</hash>
       </entry>
       <entry>
          <file>main.c</file>
          <hash>c6326d59b7b2b5eb63d319f6f8618161cb95d25294e8c0c979c9aa1a22f11d2d</hash>
       </entry>
       <entry>
+         <file>mcc_generated_files\adc1.c</file>
+         <hash>07babc8a0037bd1d567fb11c677d516cd9e3cd1ee048e89ec8ee6800997a7813</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files\X2CCode\X2C.c</file>
-         <hash>03abd12e0dfa6736897388e676cea1fa40ba5e4398a6f9ef5fd5e7e396d43cae</hash>
+         <hash>1a677c491c83d24198a5fc8cba8cfd22042c71c256b2ea3da6d9520130441415</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pwm.h</file>
@@ -55835,7 +55835,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\X2C.h</file>
-         <hash>3f2a0ea6eb9c8039c53f489cb972a0605f732a105a454f9133140372b90b2692</hash>
+         <hash>d3fa1fbc724e95766721786c60503f0d082809ccb5d56a10a8af01dad8b14f2f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Library\MCHP\Controller\lib\libdsPIC33CK_MCHP.a</file>
