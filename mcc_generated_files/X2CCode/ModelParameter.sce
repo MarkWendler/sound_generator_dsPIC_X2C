@@ -5,13 +5,13 @@
 // Simulation settings
 endTime     = 5;
 stepSize    = 1.0E-2; 
-// X2C_sampleTime = 5.0E-5; //20kHz
+X2C_sampleTime = 5.0E-5; //20kHz
 
 // CODE GENERATION PARAMETERS
 
 
 Vbar = 14 //14V battery
 
-
-
+//Load wav file to lookup table
+load_Table = wavread("test.wav",[1,4097])
 

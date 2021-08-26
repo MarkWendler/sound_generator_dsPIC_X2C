@@ -65,8 +65,8 @@ void UpdateInports(void) {
         }    
     } 
     //-----------------------------
-    if(IO_SW1_GetValue()) x2cModel.inports.bSW1 = false;
-    else  x2cModel.inports.bSW1 = true;
+    if(IO_SW1_GetValue()) x2cModel.inports.bSW1 = INT16_MAX;
+    else  x2cModel.inports.bSW1 = 0;
     if(IO_SW2_GetValue()) x2cModel.inports.bSW2 = false;
     else  x2cModel.inports.bSW2 = true;
     
