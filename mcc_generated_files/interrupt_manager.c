@@ -52,13 +52,19 @@
 */
 void INTERRUPT_Initialize (void)
 {
+    //    CCPI: CCP1 Capture/Compare Event
+    //    Priority: 1
+        IPC1bits.CCP1IP = 1;
+    //    CCTI: CCP1 Timer Event
+    //    Priority: 1
+        IPC1bits.CCT1IP = 1;
     //    ADCAN24: ADC AN24 Convert Done
     //    Priority: 1
         IPC48bits.ADCAN24IP = 1;
-    //    ADCAN0: ADC AN0 Convert Done
-    //    Priority: 1
-        IPC22bits.ADCAN0IP = 1;
     //    ADCAN25: ADC AN25 Convert Done
     //    Priority: 1
         IPC48bits.ADCAN25IP = 1;
+    //    TI: Timer 1
+    //    Priority: 1
+        IPC0bits.T1IP = 1;
 }

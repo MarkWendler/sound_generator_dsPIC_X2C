@@ -22,10 +22,32 @@
 #include "../qei.h"
 #include "../../userparms.h"
 
-    volatile int16_t offset_AN0_IA=0, offset_AN1_IB=0, offset_AN4_IBUS = 0;
-    volatile int16_t IA, IB; //For debugging
+    volatile int16_t channelFreq1 =0;
+    volatile int16_t channelFreq2 =0;
+    volatile int16_t channelFreq3 =0;
+    volatile int16_t channelFreq4 =0;
 void UpdateInports(void) {
 
+    /*
+     * Pass the peripheral values to model Inports
+     * if (PORTA & 1) { 
+     *    x2cModel.inports.bInport = INT16_MAX;
+     * }else {
+     *    x2cModel.inports.bInport = 0;
+     * }
+     * 
+     * The following inputs of the model can be used:
+      x2cModel.inports.bCPU_LOAD = Scaling*A_PeripheralVariable
+      x2cModel.inports.bEnableControl = Scaling*A_PeripheralVariable
+      x2cModel.inports.bFreq1 = Scaling*A_PeripheralVariable
+      x2cModel.inports.bFreq2 = Scaling*A_PeripheralVariable
+      x2cModel.inports.bFreq3 = Scaling*A_PeripheralVariable
+      x2cModel.inports.bFreq4 = Scaling*A_PeripheralVariable
+      x2cModel.inports.bSW2 = Scaling*A_PeripheralVariable
+      x2cModel.inports.bV_POT = Scaling*A_PeripheralVariable
+
+     */    
+    
     static unsigned char SW3_Value;
     static unsigned char SW3_Value_old = 1;
     static unsigned char DebounceCnt;
@@ -65,18 +87,18 @@ void UpdateInports(void) {
         }    
     } 
     //-----------------------------
-    if(IO_SW1_GetValue()) x2cModel.inports.bSW1 = INT16_MAX;
-    else  x2cModel.inports.bSW1 = 0;
+    x2cModel.inports.bFreq1 = channelFreq1;
+    x2cModel.inports.bFreq2 = channelFreq2;
+    x2cModel.inports.bFreq3 = channelFreq3;
+    x2cModel.inports.bFreq4 = channelFreq4;
+    
     if(IO_SW2_GetValue()) x2cModel.inports.bSW2 = false;
     else  x2cModel.inports.bSW2 = true;
     
-    /* ADC */   
-    //x2cModel.inports.bCurrent = ADC1_ConversionResultGet(CH_AN0_IA) - offset_AN0_IA;
-    x2cModel.inports.bCurrent = ADC1_ConversionResultGet(CH_AN1_IB) - offset_AN1_IB;
-    //x2cModel.inports.bCurrent = ADC1_ConversionResultGet(CH_AN4_IBUS) - offset_AN4_IBUS;
     
     //Shift POT middle position should be zero
-    x2cModel.inports.bV_POT = ADC1_ConversionResultGet(CH_AN11_POT) + 0x8000;
+    ADC1_SoftwareTriggerEnable();
+    x2cModel.inports.bV_POT = ADC1_ConversionResultGet(CH_AN11_POT)<<3;
     
     x2cModel.inports.bCPU_LOAD = CpuLoad;
     
@@ -85,7 +107,19 @@ void UpdateInports(void) {
 
 void UpdateOutports(void) {
 
-    
+    /*
+     * Pass model outports to peripherals e.g.:
+     * 
+     * if (*x2cModel.outports.bOutport) {  // if model Outport differ than zero 
+     *    LATB |= 1; // set LATB0 
+     * } else {
+     *    LATB &= ~1; // clear LATB0
+     * }    
+     * 
+     * The following outputs of the model can be used:
+      A_PeripheralVariable = *x2cModel.outports.bLED_LD10*Scaling
+      A_PeripheralVariable = *x2cModel.outports.bPWM1*Scaling
+     */       
     if (x2cModel.inports.bEnableControl) //Enable PWM output
     {
         PG1IOCONLbits.OVRENH = 0;
@@ -121,15 +155,10 @@ void UpdateOutports(void) {
  * Last read model outports and update the peripherals
 */
 
-void __attribute__ ( ( __interrupt__ , auto_psv ) ) _ADCAN0Interrupt ( void )
-{
-    volatile uint16_t valchannel_AN0;
+void ModelCalculation(void){
+
     IO_LD11_SetHigh();
     
-    //Read the ADC value from the ADCBUF
-    valchannel_AN0 = ADCBUF0;
-    //clear the channel_AN1 interrupt flag
-    IFS5bits.ADCAN0IF = 0;
     UpdateInports();
     X2C_Update();
     UpdateOutports();

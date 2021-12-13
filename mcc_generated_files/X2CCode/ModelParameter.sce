@@ -5,8 +5,9 @@
 // Simulation settings
 endTime     = 5;
 stepSize    = 1.0E-2; 
-X2C_sampleTime = 5.0E-5; //20kHz
-
+FIP_INT_MAX = 32767; // Make frequency calculation easy
+X2C_sampleTime = 1/FIP_INT_MAX //1/32767 = 0.0000305
+disp(X2C_sampleTime ,"X2C_sampleTime=");
 // CODE GENERATION PARAMETERS
 
 

@@ -1,10 +1,10 @@
 @echo off
 
-set PROJECT_ROOT= C:\_projects\noisegen_fip_dspic33ck_int_lvmc.x
-set MPLABX_ROOT=C:\Program Files\Microchip\MPLABX\v5.45
+set PROJECT_ROOT= C:\_projects\SoundPlayer_dsPIC33CK_LVMC
+set MPLABX_ROOT=C:\Program Files\Microchip\MPLABX\v5.50
 set DEVICE=33CK256MP508
 set TOOL=Supported device not found. Please programm it manually!
-set HEXFILE=/dist/default/production/noisegen_fip_dspic33ck_int_lvmc.X.production.hex
+set HEXFILE=/dist/default/production/SoundPlayer_dsPIC33CK_LVMC.X.production.hex
 
 :: log file to current users' desktop
 ::set BATCHLOG=%USERPROFILE%\Desktop\batchlog.txt

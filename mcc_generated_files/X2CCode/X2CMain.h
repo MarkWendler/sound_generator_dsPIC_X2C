@@ -23,8 +23,7 @@
 /* This section lists the other files that are included in this file.
  */
 
-/* TODO:  Include other files here if needed. */
-
+void ModelCalculation(void);
 
 /* Provide C++ Compatibility */
 #ifdef __cplusplus
