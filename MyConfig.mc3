@@ -53162,7 +53162,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="SCCP1" name="prlkey"/>
-         <value>12500000</value>
+         <value>100000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="SCCP1" name="sccpFreq"/>
@@ -53830,11 +53830,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="SCCP1" registerAlias="CCPPRH"/>
-         <value>190</value>
+         <value>1</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="SCCP1" registerAlias="CCPPRL"/>
-         <value>48160</value>
+         <value>34464</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="SCCP1" registerAlias="CCPRAL"/>
@@ -53998,11 +53998,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="SCCP1" registerAlias="CCPPRH" settingAlias="PRH"/>
-         <value>190</value>
+         <value>1</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="SCCP1" registerAlias="CCPPRL" settingAlias="PRL"/>
-         <value>48160</value>
+         <value>34464</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="SCCP1" registerAlias="CCPRAL" settingAlias="CMPA"/>
@@ -54954,11 +54954,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="actualPeriod"/>
-         <value>0.0000305</value>
+         <value>0.000015</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="callBackRate"/>
-         <value>0.0000305</value>
+         <value>0.000015</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="clockSourceSelect"/>
@@ -54970,7 +54970,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="customPR"/>
-         <value>3049</value>
+         <value>1499</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="inputMode"/>
@@ -54998,7 +54998,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="requestedPeriod"/>
-         <value>0.0000305</value>
+         <value>0.000015</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="tickerFactor"/>
@@ -55114,7 +55114,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="TMR1" registerAlias="PR"/>
-         <value>3049</value>
+         <value>1499</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="TMR1" registerAlias="TCON"/>
@@ -55126,7 +55126,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TMR1" registerAlias="PR" settingAlias="PR"/>
-         <value>3049</value>
+         <value>1499</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TMR1" registerAlias="TCON" settingAlias="PRWIP"/>
@@ -56435,12 +56435,12 @@
          <hash>e37730023414e41409b4abda4fc37ef9873178286f0e6067004efe0d0082f480</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\mcc.c</file>
-         <hash>71df66c45ef600b0d49c4ae68448e3a9b42643ec6ccccf04ec4777eaf9d55a6f</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\X2CCode\Controller\Common\CommonFcts.h</file>
          <hash>9741bfd1191f46852cc2bebb59967144b3367f9ebe083d1db08337b860baad7c</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\mcc.c</file>
+         <hash>71df66c45ef600b0d49c4ae68448e3a9b42643ec6ccccf04ec4777eaf9d55a6f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Controller\Common\Target.h</file>
@@ -56479,12 +56479,12 @@
          <hash>19b13eaab651181650ecb8706cbf994c9e739fba398b9bfdd103448d6a5764f4</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\tmr1.c</file>
-         <hash>769b5783f03fe4702e74854ac0d9453b2940c65e6aa2f7ff4b2f1d9e55fee1ac</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\X2CCode\Controller\Protocol\LNet\LNet.c</file>
          <hash>90249ee6d1197482265aae389d07d5b743b9a1f0bea246220707f616fdff4450</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\tmr1.c</file>
+         <hash>8605fe2db3e0702e76e08ad4dfd195e861680e15a00ac5610ee140d90fbd40ba</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Controller\Common\Atan_Data.h</file>
@@ -56504,7 +56504,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.c</file>
-         <hash>a90770e3953092544f5b960ad1918392fe1d071d2e21d83aef6d264c8428fb60</hash>
+         <hash>ea5d5c54022c03ee54d5211c21450568e3ba6dd14dd9d5d36babdecbf8f9f116</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Controller\Common\Exp_Data.h</file>
@@ -56532,7 +56532,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\RamTable.h</file>
-         <hash>c449ae7534fb75b7b6290ad2da4aea14851b6f1dd9cfef86d72b07c4673d13fb</hash>
+         <hash>b2443f3bd2b1d27b80a44e79baa18f84ab9c486a1458c39b4a32d349ae872455</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>
@@ -56552,7 +56552,11 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\RamTable.c</file>
-         <hash>bd4c5913d7941a087519d4596e5d2e5c53d2180e0542700cd658c51b18058fef</hash>
+         <hash>1e44f68a46cd627d8f4ea32d8b3f685364eb024627a454afd0a893ff1b5224b4</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\pwm_module_features.h</file>
+         <hash>126ea94c8a67bf698bf0d4f35740bedaf5162e01b8f0097bec03cf15339e3971</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Controller\Common\Typecast.h</file>
@@ -56563,16 +56567,12 @@
          <hash>4007fb1c34313252bbcf37ba8cc3fbed9fcbf25f750450dccea16559d80cba14</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\pwm_module_features.h</file>
-         <hash>126ea94c8a67bf698bf0d4f35740bedaf5162e01b8f0097bec03cf15339e3971</hash>
+         <file>mcc_generated_files\X2CCode\Controller\Common\Sin2_Data.h</file>
+         <hash>f65f7e8c44fba52a3aca10456c9dfd6c8f23811fe1f4fa344b49819768bac89d</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\sccp1_tmr.c</file>
-         <hash>66448edaa5c4d5dc8a35e0b0357ef46574e331d43236480fffb85e67badf68be</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\X2CCode\Controller\Common\Sin2_Data.h</file>
-         <hash>f65f7e8c44fba52a3aca10456c9dfd6c8f23811fe1f4fa344b49819768bac89d</hash>
+         <hash>c547a5c8dd206a0d29c68d331adf3b43953e18fdaeb11853174e4f56a9d99911</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Controller\Common\Sin2_Data.c</file>
@@ -56587,12 +56587,12 @@
          <hash>ffae80c023ed79ae360ecaa85c919c644ba13bff9e15658c56b1b0a136bf9b2a</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\system.h</file>
-         <hash>bc31b1b0225613a3bbc62ef86724ed9e936cbfc5d689c325e3843eebba870f67</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\X2CCode\X2CMain.c</file>
          <hash>39c30a094c502d487d082520735b862cdc333c0e1236cd86ccb8d375b7906578</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\system.h</file>
+         <hash>bc31b1b0225613a3bbc62ef86724ed9e936cbfc5d689c325e3843eebba870f67</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Library\General\Controller\lib\libdsPIC33CK_General.a</file>
@@ -56600,7 +56600,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>5d65a308b43c09db8baa2111029f54a8f54b201ad0ab2fbf949c314e58895ad6</hash>
+         <hash>ad91affb9912da19bfdbc1ce22562ec7f8a0d238a45111c90232e82bc8010671</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\doc\Docu.doxyfile</file>
@@ -56615,12 +56615,12 @@
          <hash>b79f9550436aa4c81591483be90f6b93ff6dad90603b3c466f8062c8e7c6c6ef</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\clock.h</file>
-         <hash>9e876c3cb37df26a46faa4625e39b69f4b99765033bd93681577ff15019c15c7</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\X2CCode\Controller\Services\BlockServices.c</file>
          <hash>d35fb3f02358aca3de8ece651e9ad1d9a47f012b858a8d7b829a82833018eebe</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\clock.h</file>
+         <hash>9e876c3cb37df26a46faa4625e39b69f4b99765033bd93681577ff15019c15c7</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\X2CComm.h</file>
@@ -56631,16 +56631,16 @@
          <hash>a295a868b35139a0690d38d2d3bff4274e33cd32af9ac122536ef421181f793b</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\mcc.h</file>
-         <hash>411243c01765c72d38032e7b639eb12527438d1cb8ad084aa810e60635746ba1</hash>
+         <file>mcc_generated_files\pwm.c</file>
+         <hash>9987da6c932aa9e12d6c476ead652c3462800e6f3320abadd05ebd2d2b66d479</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Controller\Common\TableStruct.h</file>
          <hash>3b8bfff69b34c4d6b1276f0e2540af844e5bb295697374e7c156ca4dca23feac</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\pwm.c</file>
-         <hash>9987da6c932aa9e12d6c476ead652c3462800e6f3320abadd05ebd2d2b66d479</hash>
+         <file>mcc_generated_files\mcc.h</file>
+         <hash>8f188375c6eba900784269ea9a81336de58f02d748ab5cd02134a97595be03f2</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Library\Math\Controller\lib\libdsPIC33CK_Math.a</file>
@@ -56648,7 +56648,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\FlashTable.h</file>
-         <hash>91f9fe9c7f12a62e7cb2e3c399188d2b524696cda7349a3af6fd62cbfeb12f89</hash>
+         <hash>89005c38a11e4c51da171348ecb236c180963c86b7823f37e17b699769075089</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\reset.c</file>
@@ -56664,19 +56664,19 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\FlashTable.c</file>
-         <hash>e11a2ea8f05518d340040c1d31eff9837545abe306ab7abada46ffcba52da28e</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\adc1.c</file>
-         <hash>774909a7a3d9ea363b8efacf9434418b68b528720892d97ab217a63dcf7c515b</hash>
+         <hash>e96a548a297b710d7eecec120a5386c850c0e6d0e2ed07b9ac462093bc46b713</hash>
       </entry>
       <entry>
          <file>main.c</file>
          <hash>c6326d59b7b2b5eb63d319f6f8618161cb95d25294e8c0c979c9aa1a22f11d2d</hash>
       </entry>
       <entry>
+         <file>mcc_generated_files\adc1.c</file>
+         <hash>774909a7a3d9ea363b8efacf9434418b68b528720892d97ab217a63dcf7c515b</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files\X2CCode\X2C.c</file>
-         <hash>970292777ae175e035ce248d3782a26ad5e5da3e127a93528c874ef389e77c51</hash>
+         <hash>f02e7d9bdd1861a506e5b59dc2efcac843918b4dd81de8abdd4a2265158d3d7a</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pwm.h</file>
@@ -56684,7 +56684,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\X2C.h</file>
-         <hash>04be1d663deab59cc485c8459e7bf074a2c0686cd96c620fd7805c737b317f7e</hash>
+         <hash>27d76e15bcb79634abbe4f1326a4ed20dfa08fb14b76b5b6aa2c2be1313961f7</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\X2CCode\Library\MCHP\Controller\lib\libdsPIC33CK_MCHP.a</file>

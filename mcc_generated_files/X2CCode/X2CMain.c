@@ -23,9 +23,7 @@
 #include "../../userparms.h"
 
     volatile int16_t channelFreq1 =0;
-    volatile int16_t channelFreq2 =0;
-    volatile int16_t channelFreq3 =0;
-    volatile int16_t channelFreq4 =0;
+    volatile bool newNote; 
 void UpdateInports(void) {
 
     /*
@@ -88,9 +86,8 @@ void UpdateInports(void) {
     } 
     //-----------------------------
     x2cModel.inports.bFreq1 = channelFreq1;
-    x2cModel.inports.bFreq2 = channelFreq2;
-    x2cModel.inports.bFreq3 = channelFreq3;
-    x2cModel.inports.bFreq4 = channelFreq4;
+    x2cModel.inports.bNewNote = newNote;
+    
     
     if(IO_SW2_GetValue()) x2cModel.inports.bSW2 = false;
     else  x2cModel.inports.bSW2 = true;

@@ -2,14 +2,14 @@
  * @file
  * @brief Generated RAM table file.
  * 
- * Date:  2021-12-11 16:09
+ * Date:  2021-12-22 14:42
  * 
  * X2C-Version: 6.3.2018
  * X2C-Edition: Free
  */
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
-/* Date:  2021-12-11 16:09                                                                                            */
+/* Date:  2021-12-22 14:42                                                                                            */
 
 /* X2C-Version: 6.3.2018                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -23,9 +23,10 @@ extern "C" {
 
 #include "Target.h"
 
-/**********************************************************************************************************************/
-/*                                                    No RAM tables                                                   */
-/**********************************************************************************************************************/
+/* public prototypes */
+void initRamTables(void);
+
+extern int16 RamTable_int16[1];
 
 #ifdef __cplusplus
 }

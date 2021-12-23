@@ -1,7 +1,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: soundplayer_dspic33ck_lvmc                                                                                  */
-/* Date:  2021-12-11 16:09                                                                                            */
+/* Date:  2021-12-22 14:42                                                                                            */
 
 /* X2C-Version: 6.3.2018                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -66,7 +66,7 @@ const tMaskParamDataRecord maskParamDataTable[] = {
 /**********************************************************************************************************************/
 float_CoT getModelSampleTime()
 {
-    return ((float_CoT)3.051850947599719E-5);
+    return ((float_CoT)1.5259254737998596E-5);
 }
 
 /**********************************************************************************************************************/
@@ -80,19 +80,10 @@ void X2C_Init()
 
     /* Block: Abs                                                                                                     */
 
-    /* Block: Constant                                                                                                */
-    /* Value = 0.0                                                                                                    */
-    x2cModel.blocks.bConstant.K = 0;
-
-    /* Block: Gain                                                                                                    */
-    /* Gain = 1.0                                                                                                     */
-    x2cModel.blocks.bGain.V = 16384;
-    x2cModel.blocks.bGain.sfr = 14;
-
     /* Block: Gain1                                                                                                   */
-    /* Gain = 0.3                                                                                                     */
-    x2cModel.blocks.bGain1.V = 9830;
-    x2cModel.blocks.bGain1.sfr = 15;
+    /* Gain = 1.0                                                                                                     */
+    x2cModel.blocks.bGain1.V = 16384;
+    x2cModel.blocks.bGain1.sfr = 14;
 
     /* Block: Mult                                                                                                    */
 
@@ -101,64 +92,64 @@ void X2C_Init()
     /* fc = 15000.0                                                                                                   */
     /* ts_fact = 1.0                                                                                                  */
     /* method = zoh                                                                                                   */
-    x2cModel.blocks.bPT1.b0 = 15461;
+    x2cModel.blocks.bPT1.b0 = 12495;
     x2cModel.blocks.bPT1.b1 = 0;
-    x2cModel.blocks.bPT1.a0 = -1846;
+    x2cModel.blocks.bPT1.a0 = -7778;
     x2cModel.blocks.bPT1.sfrb = 15;
     x2cModel.blocks.bPT1.sfra = 15;
     x2cModel.blocks.bPT1.in_old = 0;
 
     /* Block: SinGen1                                                                                                 */
-    /* fmax = 32767.0                                                                                                 */
+    /* fmax = 16100.0                                                                                                 */
     /* Offset = 0.0                                                                                                   */
     /* Phase = 0.0                                                                                                    */
     /* ts_fact = 1.0                                                                                                  */
-    x2cModel.blocks.bSinGen1.delta_phi = 32767;
+    x2cModel.blocks.bSinGen1.delta_phi = 32100;
     x2cModel.blocks.bSinGen1.phase = 0;
     x2cModel.blocks.bSinGen1.offset = 0;
     x2cModel.blocks.bSinGen1.phi = 0;
 
-    /* Block: SinGen2                                                                                                 */
-    /* fmax = 32767.0                                                                                                 */
-    /* Offset = 0.0                                                                                                   */
-    /* Phase = 0.0                                                                                                    */
+    /* Block: SuperBlock/AutoSwitch                                                                                   */
+    /* Thresh_up = 0.1                                                                                                */
+    /* Thresh_down = 0.1                                                                                              */
+    x2cModel.blocks.sSuperBlock.bAutoSwitch.Thresh_up = 3277;
+    x2cModel.blocks.sSuperBlock.bAutoSwitch.Thresh_down = 3277;
+    x2cModel.blocks.sSuperBlock.bAutoSwitch.Status = &RamTable_int16[0];
+
+    /* Block: SuperBlock/Constant                                                                                     */
+    /* Value = 0.0                                                                                                    */
+    x2cModel.blocks.sSuperBlock.bConstant.K = 0;
+
+    /* Block: SuperBlock/Constant1                                                                                    */
+    /* Value = 1.0                                                                                                    */
+    x2cModel.blocks.sSuperBlock.bConstant1.K = 32767;
+
+    /* Block: SuperBlock/Constant2                                                                                    */
+    /* Value = 0.0                                                                                                    */
+    x2cModel.blocks.sSuperBlock.bConstant2.K = 0;
+
+    /* Block: SuperBlock/Gain1                                                                                        */
+    /* Gain = 1.0                                                                                                     */
+    x2cModel.blocks.sSuperBlock.bGain1.V = 16384;
+    x2cModel.blocks.sSuperBlock.bGain1.sfr = 14;
+
+    /* Block: SuperBlock/LookupTable1                                                                                 */
+    /* Lookup = [real 1x257 row vector]                                                                               */
+    x2cModel.blocks.sSuperBlock.bLookupTable1.Table = &FlashTable_int16[0];
+
+    /* Block: SuperBlock/TypeConv                                                                                     */
+
+    /* Block: SuperBlock/uI                                                                                           */
+    /* Ki = 1.0                                                                                                       */
     /* ts_fact = 1.0                                                                                                  */
-    x2cModel.blocks.bSinGen2.delta_phi = 32767;
-    x2cModel.blocks.bSinGen2.phase = 0;
-    x2cModel.blocks.bSinGen2.offset = 0;
-    x2cModel.blocks.bSinGen2.phi = 0;
+    x2cModel.blocks.sSuperBlock.buI.b0 = 1;
+    x2cModel.blocks.sSuperBlock.buI.sfr = 15;
+    x2cModel.blocks.sSuperBlock.buI.i_old = 0;
+    x2cModel.blocks.sSuperBlock.buI.enable_old = 0;
 
-    /* Block: SinGen3                                                                                                 */
-    /* fmax = 32767.0                                                                                                 */
-    /* Offset = 0.0                                                                                                   */
-    /* Phase = 0.0                                                                                                    */
-    /* ts_fact = 1.0                                                                                                  */
-    x2cModel.blocks.bSinGen3.delta_phi = 32767;
-    x2cModel.blocks.bSinGen3.phase = 0;
-    x2cModel.blocks.bSinGen3.offset = 0;
-    x2cModel.blocks.bSinGen3.phi = 0;
 
-    /* Block: SinGen4                                                                                                 */
-    /* fmax = 32767.0                                                                                                 */
-    /* Offset = 0.0                                                                                                   */
-    /* Phase = 0.0                                                                                                    */
-    /* ts_fact = 1.0                                                                                                  */
-    x2cModel.blocks.bSinGen4.delta_phi = 32767;
-    x2cModel.blocks.bSinGen4.phase = 0;
-    x2cModel.blocks.bSinGen4.offset = 0;
-    x2cModel.blocks.bSinGen4.phi = 0;
-
-    /* Block: Sum                                                                                                     */
-    /* In1 = +                                                                                                        */
-    /* In2 = +                                                                                                        */
-    /* In3 = +                                                                                                        */
-    /* In4 = +                                                                                                        */
-    /* In5 = 0                                                                                                        */
-    /* In6 = 0                                                                                                        */
-    /* In7 = 0                                                                                                        */
-    /* In8 = 0                                                                                                        */
-    x2cModel.blocks.bSum.sign = 85;
-
+    /* Initialize RAM table content */
+    initRamTables();
 
     /******************************************************************************************************************/
     /**                                              Initialize Inports                                              **/
@@ -166,9 +157,7 @@ void X2C_Init()
     x2cModel.inports.bCPU_LOAD = (int16)0;
     x2cModel.inports.bEnableControl = false;
     x2cModel.inports.bFreq1 = (int16)0;
-    x2cModel.inports.bFreq2 = (int16)0;
-    x2cModel.inports.bFreq3 = (int16)0;
-    x2cModel.inports.bFreq4 = (int16)0;
+    x2cModel.inports.bNewNote = false;
     x2cModel.inports.bSW2 = false;
     x2cModel.inports.bV_POT = (int16)0;
 
@@ -180,21 +169,15 @@ void X2C_Init()
     x2cModel.blocks.bAbs.In =
         &x2cModel.inports.bV_POT;
 
-    /* Block Constant                                                                                                 */
-
-    /* Block Gain                                                                                                     */
-    x2cModel.blocks.bGain.In =
-        &x2cModel.blocks.bGain1.Out;
-
     /* Block Gain1                                                                                                    */
     x2cModel.blocks.bGain1.In =
         &x2cModel.blocks.bAbs.Out;
 
     /* Block Mult                                                                                                     */
     x2cModel.blocks.bMult.In1 =
-        &x2cModel.blocks.bSum.Out;
+        &x2cModel.blocks.bSinGen1.u;
     x2cModel.blocks.bMult.In2 =
-        &x2cModel.blocks.bGain.Out;
+        &x2cModel.blocks.bGain1.Out;
 
     /* Block PT1                                                                                                      */
     x2cModel.blocks.bPT1.In =
@@ -202,45 +185,43 @@ void X2C_Init()
 
     /* Block SinGen1                                                                                                  */
     x2cModel.blocks.bSinGen1.A =
-        &x2cModel.blocks.bGain1.Out;
+        &x2cModel.blocks.sSuperBlock.bAutoSwitch.Out;
     x2cModel.blocks.bSinGen1.f =
-        &x2cModel.inports.bFreq4;
-
-    /* Block SinGen2                                                                                                  */
-    x2cModel.blocks.bSinGen2.A =
-        &x2cModel.blocks.bGain1.Out;
-    x2cModel.blocks.bSinGen2.f =
         &x2cModel.inports.bFreq1;
 
-    /* Block SinGen3                                                                                                  */
-    x2cModel.blocks.bSinGen3.A =
-        &x2cModel.blocks.bGain1.Out;
-    x2cModel.blocks.bSinGen3.f =
-        &x2cModel.inports.bFreq2;
+    /* Block AutoSwitch                                                                                               */
+    x2cModel.blocks.sSuperBlock.bAutoSwitch.In1 =
+        &x2cModel.blocks.sSuperBlock.bGain1.Out;
+    x2cModel.blocks.sSuperBlock.bAutoSwitch.Switch =
+        &x2cModel.blocks.sSuperBlock.bTypeConv.Out;
+    x2cModel.blocks.sSuperBlock.bAutoSwitch.In3 =
+        &x2cModel.blocks.sSuperBlock.bConstant2.Out;
 
-    /* Block SinGen4                                                                                                  */
-    x2cModel.blocks.bSinGen4.A =
-        &x2cModel.blocks.bGain1.Out;
-    x2cModel.blocks.bSinGen4.f =
-        &x2cModel.inports.bFreq3;
+    /* Block Constant                                                                                                 */
 
-    /* Block Sum                                                                                                      */
-    x2cModel.blocks.bSum.In1 =
-        &x2cModel.blocks.bSinGen1.u;
-    x2cModel.blocks.bSum.In2 =
-        &x2cModel.blocks.bSinGen2.u;
-    x2cModel.blocks.bSum.In3 =
-        &x2cModel.blocks.bSinGen3.u;
-    x2cModel.blocks.bSum.In4 =
-        &x2cModel.blocks.bSinGen4.u;
-    x2cModel.blocks.bSum.In5 =
-        &x2cModel.blocks.bConstant.Out;
-    x2cModel.blocks.bSum.In6 =
-        &x2cModel.blocks.bConstant.Out;
-    x2cModel.blocks.bSum.In7 =
-        &x2cModel.blocks.bConstant.Out;
-    x2cModel.blocks.bSum.In8 =
-        &x2cModel.blocks.bConstant.Out;
+    /* Block Constant1                                                                                                */
+
+    /* Block Constant2                                                                                                */
+
+    /* Block Gain1                                                                                                    */
+    x2cModel.blocks.sSuperBlock.bGain1.In =
+        &x2cModel.blocks.sSuperBlock.bLookupTable1.Out;
+
+    /* Block LookupTable1                                                                                             */
+    x2cModel.blocks.sSuperBlock.bLookupTable1.In =
+        &x2cModel.blocks.sSuperBlock.buI.Out;
+
+    /* Block TypeConv                                                                                                 */
+    x2cModel.blocks.sSuperBlock.bTypeConv.In =
+        &x2cModel.inports.bNewNote;
+
+    /* Block uI                                                                                                       */
+    x2cModel.blocks.sSuperBlock.buI.In =
+        &x2cModel.blocks.sSuperBlock.bConstant1.Out;
+    x2cModel.blocks.sSuperBlock.buI.Init =
+        &x2cModel.blocks.sSuperBlock.bConstant.Out;
+    x2cModel.blocks.sSuperBlock.buI.Enable =
+        &x2cModel.inports.bNewNote;
 
     /******************************************************************************************************************/
     /**                                                 Link Outports                                                **/
@@ -254,16 +235,18 @@ void X2C_Init()
     /**                                           Run Block Init Functions                                           **/
     /******************************************************************************************************************/
     Abs_FiP16_Init(&x2cModel.blocks.bAbs);
-    Constant_FiP16_Init(&x2cModel.blocks.bConstant);
-    Gain_FiP16_Init(&x2cModel.blocks.bGain);
     Gain_FiP16_Init(&x2cModel.blocks.bGain1);
     Mult_FiP16_Init(&x2cModel.blocks.bMult);
     PT1_FiP16_Init(&x2cModel.blocks.bPT1);
     SinGen_FiP16_Init(&x2cModel.blocks.bSinGen1);
-    SinGen_FiP16_Init(&x2cModel.blocks.bSinGen2);
-    SinGen_FiP16_Init(&x2cModel.blocks.bSinGen3);
-    SinGen_FiP16_Init(&x2cModel.blocks.bSinGen4);
-    Sum_FiP16_Init(&x2cModel.blocks.bSum);
+    AutoSwitch_FiP16_Init(&x2cModel.blocks.sSuperBlock.bAutoSwitch);
+    Constant_FiP16_Init(&x2cModel.blocks.sSuperBlock.bConstant);
+    Constant_FiP16_Init(&x2cModel.blocks.sSuperBlock.bConstant1);
+    Constant_FiP16_Init(&x2cModel.blocks.sSuperBlock.bConstant2);
+    Gain_FiP16_Init(&x2cModel.blocks.sSuperBlock.bGain1);
+    LookupTable_FiP16_Init(&x2cModel.blocks.sSuperBlock.bLookupTable1);
+    TypeConv_Bool_FiP16_Init(&x2cModel.blocks.sSuperBlock.bTypeConv);
+    uI_FiP16_Init(&x2cModel.blocks.sSuperBlock.buI);
     Scope_Main_Init(&x2cScope);
 
     /* Initialize TableStruct tables                                                                                  */
@@ -286,14 +269,14 @@ void X2C_Update(void)
 /* X2C_Update for blocks with 1*Ts                                                                                    */
 void X2C_Update_1(void)
 {
+    uI_FiP16_Update(&x2cModel.blocks.sSuperBlock.buI);
+    LookupTable_FiP16_Update(&x2cModel.blocks.sSuperBlock.bLookupTable1);
+    Gain_FiP16_Update(&x2cModel.blocks.sSuperBlock.bGain1);
+    TypeConv_Bool_FiP16_Update(&x2cModel.blocks.sSuperBlock.bTypeConv);
     Abs_FiP16_Update(&x2cModel.blocks.bAbs);
+    AutoSwitch_FiP16_Update(&x2cModel.blocks.sSuperBlock.bAutoSwitch);
     Gain_FiP16_Update(&x2cModel.blocks.bGain1);
     SinGen_FiP16_Update(&x2cModel.blocks.bSinGen1);
-    SinGen_FiP16_Update(&x2cModel.blocks.bSinGen2);
-    SinGen_FiP16_Update(&x2cModel.blocks.bSinGen3);
-    SinGen_FiP16_Update(&x2cModel.blocks.bSinGen4);
-    Gain_FiP16_Update(&x2cModel.blocks.bGain);
-    Sum_FiP16_Update(&x2cModel.blocks.bSum);
     Mult_FiP16_Update(&x2cModel.blocks.bMult);
     PT1_FiP16_Update(&x2cModel.blocks.bPT1);
     Scope_Main_Update(&x2cScope);
