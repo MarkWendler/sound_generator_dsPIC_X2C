@@ -2,19 +2,18 @@
 
 This is a sound generator demo project for [Low Voltage Motor Control (LVMC)](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/DM330031) development board and [dsPIC33CK256MP508](https://www.microchip.com/wwwproducts/en/dsPIC33CK256MP508) microcontroller that is populated on the board. 
 
-The demo drives a ~10-20cm size 12V speaker a Permanent Magnet Syncronous Motor (3 phase low voltage motor) with Field Oriented Control algorithm in sensorless mode by default, using a PLL speed and rotor position estimator.
+
+
+The demo drives a speaker or a Motor to play notes.
+
+[Video](https://microchiptechnology-my.sharepoint.com/:v:/g/personal/mark_wendler_microchip_com/ER4R-VjUtIJHlTP9Xt5HCMYB0wU3iUwKpqfh00sCoDp8tQ?e=nzepZ7)
 
 ### Features
-* Simple sine wave generator with auto sweeping
-* Sound generator from lookup table (MCU builtin flash 4k samples limit)
-* Optional current control mode (Further tuning/investigation needed)
+* Simple sine wave generator with frequency input
+* Envelope generator/amplitude modulation for note playback from lookup table
+* Song notes sequencing, the "player" is implemented in C
 
-### Videos
-* First test run video: [Video1](https://microchiptechnology-my.sharepoint.com/:v:/g/personal/mark_wendler_microchip_com/ETwXsPh3MT9Ou0Anty5UnXcBujyOEAphIVYeLUMNBcvAUg?e=VeVu4F)
-* With “car” sound: [Video2](https://microchiptechnology-my.sharepoint.com/:v:/g/personal/mark_wendler_microchip_com/ES4jH9eti_lBnhRbKu-w0fgBQlIf6kIj_hZeQGWG8DBzgw?e=HS5td8)
-
-
-![HW setup](doc/HW_setup_LVMC_SPEAKER.PNG)
+![HW setup 1](doc/hw_set_up.PNG) ![HW setup](doc/HW_setup_LVMC_SPEAKER.PNG)
 ## Getting Started
 
 The demo is ready to use with the [listed hardwares below](#hardware).
@@ -25,6 +24,10 @@ The demo is ready to use with the [listed hardwares below](#hardware).
 4. Build project then program the HW
 5. Press SW3 to start the noise
 6. Use POT to control sound frequency and SW1 to change mode
+
+## Create your own song
+
+Use the noteTableGenerator excel file to generate the 16bit array. See the jinglebells.c as example.
 
 ## HW/SW Tools
 ### Hardware
